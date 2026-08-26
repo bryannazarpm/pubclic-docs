@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bold POS Restaurantes — Esquema de Planes 2026 / 2027</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+:root{
+  --bold-navy:#1B2A5C; --bold-navy-light:#2D3E7A; --bold-navy-muted:#E8EBF5;
+  --bold-red:#E83A5A; --bold-red-light:#FCE8ED;
+  --bold-gold:#F5A623; --bold-gold-light:#FEF3DC;
+  --bold-blue:#4A90D9; --bold-blue-light:#E8F2FC;
+  --bold-green:#27AE60; --bold-green-light:#E6F7EE;
+  --gray-50:#F2F4F8; --gray-100:#E9ECF4; --gray-200:#D4D9E8; --gray-300:#B0B9CE;
+  --gray-400:#8A92A6; --gray-500:#636B7D; --gray-600:#4A5166; --gray-900:#1B2A5C;
+  --font:'Montserrat',system-ui,sans-serif;
+  --text-xs:11px; --text-sm:12px; --text-base:14px; --text-md:15px; --text-lg:18px;
+  --text-xl:22px; --text-2xl:28px; --text-3xl:36px;
+  --radius-sm:6px; --radius-md:10px; --radius-lg:14px; --radius-xl:20px; --radius-pill:999px;
+  --shadow-sm:0 1px 3px rgba(27,42,92,.06),0 1px 2px rgba(27,42,92,.04);
+  --shadow-md:0 4px 12px rgba(27,42,92,.09),0 2px 4px rgba(27,42,92,.05);
+  --shadow-lg:0 8px 24px rgba(27,42,92,.12),0 4px 8px rgba(27,42,92,.06);
+  --border:1.5px solid var(--gray-200);
+  --border-strong:1.5px solid var(--gray-300);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--gray-50);color:var(--bold-navy);font-size:var(--text-base);line-height:1.55}
+
+/* ── SHELL ── */
+.topbar{position:sticky;top:0;height:56px;background:#fff;border-bottom:var(--border);
+  padding:0 24px;display:flex;align-items:center;justify-content:space-between;z-index:50}
+.topbar-logo{display:flex;align-items:center;line-height:0}
+.topbar-meta{display:flex;align-items:center;gap:18px;font-size:var(--text-sm);color:var(--gray-500);font-weight:500}
+.topbar-pill{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  background:var(--bold-navy-muted);color:var(--bold-navy);padding:5px 11px;border-radius:var(--radius-pill)}
+.app-body{display:flex;align-items:flex-start;max-width:1500px;margin:0 auto}
+.sidebar{width:262px;flex-shrink:0;position:sticky;top:56px;height:calc(100vh - 56px);
+  background:#fff;border-right:var(--border);overflow-y:auto;padding:22px 0 40px}
+.sb-label{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--gray-400);padding:0 22px;margin:20px 0 8px}
+.sb-label:first-child{margin-top:0}
+.sb-link{display:flex;gap:10px;align-items:baseline;padding:8px 22px;font-size:var(--text-base);
+  font-weight:500;color:var(--gray-600);text-decoration:none;border-left:3px solid transparent;transition:all .15s ease}
+.sb-link:hover{background:var(--gray-50);color:var(--bold-navy)}
+.sb-link.active{background:var(--bold-navy-muted);color:var(--bold-navy);font-weight:600;border-left-color:var(--bold-red)}
+.sb-num{font-size:var(--text-xs);font-weight:700;color:var(--gray-300);min-width:16px}
+.sb-link.active .sb-num{color:var(--bold-red)}
+main{flex:1;min-width:0;padding:34px 40px 120px;max-width:1120px}
+
+/* ── HERO ── */
+.hero{background:var(--bold-navy);border-radius:var(--radius-xl);padding:38px 40px;color:#fff;margin-bottom:32px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;
+  background:rgba(255,255,255,.05)}
+.hero-eyebrow{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.14em;
+  color:#8FA6E8;margin-bottom:14px}
+.hero h1{font-size:var(--text-3xl);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:12px}
+.hero p{font-size:var(--text-md);color:#C3CDE8;max-width:660px;font-weight:400}
+.hero-stats{display:flex;gap:34px;margin-top:28px;flex-wrap:wrap;position:relative}
+.hero-stat span{display:block;font-size:var(--text-2xl);font-weight:700;letter-spacing:-.01em}
+.hero-stat small{font-size:var(--text-xs);color:#8FA6E8;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+
+/* ── SECTIONS ── */
+section{margin-bottom:52px;scroll-margin-top:76px}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.sec-num{font-size:var(--text-xs);font-weight:700;color:var(--bold-red);letter-spacing:.1em}
+h2{font-size:var(--text-2xl);font-weight:700;letter-spacing:-.015em;line-height:1.2}
+h3{font-size:var(--text-lg);font-weight:700;margin:28px 0 12px}
+h4{font-size:var(--text-md);font-weight:700;margin:20px 0 8px}
+.lede{font-size:var(--text-md);color:var(--gray-500);margin-bottom:22px;max-width:820px}
+p{margin-bottom:12px;max-width:860px}
+ul,ol{margin:0 0 14px 20px;max-width:860px}
+li{margin-bottom:7px}
+strong{font-weight:700}
+.label{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gray-400);margin-bottom:14px}
+
+/* ── CARDS ── */
+.card{background:#fff;border:var(--border);border-radius:var(--radius-lg);padding:22px 24px;margin-bottom:18px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:1100px){.grid3,.grid4{grid-template-columns:1fr 1fr}}
+@media(max-width:820px){.grid2,.grid3,.grid4{grid-template-columns:1fr}.sidebar{display:none}main{padding:24px 18px 80px}}
+
+.metric{background:#fff;border:var(--border);border-radius:var(--radius-lg);padding:18px 20px}
+.metric-val{font-size:var(--text-2xl);font-weight:700;letter-spacing:-.01em;line-height:1.1}
+.metric-lbl{font-size:var(--text-xs);font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--gray-400);margin-top:5px}
+.metric-note{font-size:var(--text-sm);color:var(--gray-500);margin-top:9px;line-height:1.4}
+
+.callout{border-radius:var(--radius-md);padding:16px 20px;margin:16px 0;border-left:4px solid;font-size:var(--text-base)}
+.callout .ct{font-weight:700;display:block;margin-bottom:5px;font-size:var(--text-sm);text-transform:uppercase;letter-spacing:.06em}
+.callout p:last-child{margin-bottom:0}
+.c-rec{background:var(--bold-green-light);border-color:var(--bold-green)}
+.c-rec .ct{color:#1E8449}
+.c-warn{background:var(--bold-gold-light);border-color:var(--bold-gold)}
+.c-warn .ct{color:#8A5A00}
+.c-risk{background:var(--bold-red-light);border-color:var(--bold-red)}
+.c-risk .ct{color:#B02039}
+.c-data{background:var(--bold-blue-light);border-color:var(--bold-blue)}
+.c-data .ct{color:#1F5C96}
+.c-neutral{background:var(--gray-50);border-color:var(--gray-300)}
+.c-neutral .ct{color:var(--gray-600)}
+
+/* ── TABLES ── */
+.tbl-wrap{background:#fff;border:var(--border);border-radius:var(--radius-lg);overflow:auto;margin-bottom:18px}
+table{width:100%;border-collapse:collapse;font-size:var(--text-base)}
+th{background:var(--gray-50);text-align:left;padding:11px 14px;font-size:var(--text-xs);font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;color:var(--gray-500);border-bottom:var(--border);white-space:nowrap}
+td{padding:11px 14px;border-bottom:1px solid var(--gray-100);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#FAFBFD}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.row-hl{background:var(--bold-navy-muted)!important;font-weight:600}
+th.sortable{cursor:pointer;user-select:none}
+th.sortable:hover{color:var(--bold-navy)}
+th.sortable::after{content:" ⇅";color:var(--gray-300);font-size:10px}
+
+/* ── BADGES ── */
+.b{display:inline-block;font-size:var(--text-xs);font-weight:700;padding:3px 9px;border-radius:var(--radius-pill);white-space:nowrap}
+.b-ok{background:var(--bold-green-light);color:#1E8449}
+.b-road{background:var(--bold-gold-light);color:#8A5A00}
+.b-no{background:var(--gray-100);color:var(--gray-500)}
+.b-new{background:var(--bold-red-light);color:#B02039}
+.b-navy{background:var(--bold-navy-muted);color:var(--bold-navy)}
+.b-blue{background:var(--bold-blue-light);color:#1F5C96}
+
+/* ── PLAN CARDS ── */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:8px}
+@media(max-width:900px){.plans{grid-template-columns:1fr}}
+.plan{background:#fff;border:var(--border);border-radius:var(--radius-lg);padding:24px 22px;display:flex;flex-direction:column;position:relative}
+.plan.feat{border:2px solid var(--bold-navy);box-shadow:var(--shadow-md)}
+.plan-tag{position:absolute;top:-11px;left:22px;background:var(--bold-red);color:#fff;font-size:var(--text-xs);
+  font-weight:700;padding:4px 12px;border-radius:var(--radius-pill);text-transform:uppercase;letter-spacing:.06em}
+.plan-tier{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gray-400)}
+.plan-name{font-size:var(--text-xl);font-weight:700;margin:4px 0 8px}
+.plan-who{font-size:var(--text-sm);color:var(--gray-500);min-height:56px;margin-bottom:14px}
+.plan-price{font-size:var(--text-3xl);font-weight:700;letter-spacing:-.02em;line-height:1}
+.plan-per{font-size:var(--text-sm);color:var(--gray-400);font-weight:500}
+.plan-alt{font-size:var(--text-sm);color:var(--gray-500);margin-top:6px;font-weight:500}
+.plan-anchor{font-size:var(--text-xs);color:var(--gray-400);margin-top:10px;padding-top:10px;border-top:1px solid var(--gray-100);line-height:1.45}
+.plan-limits{margin:16px 0 0;list-style:none;padding:0}
+.plan-limits li{display:flex;justify-content:space-between;gap:10px;font-size:var(--text-sm);
+  padding:7px 0;border-bottom:1px solid var(--gray-100);margin:0}
+.plan-limits li:last-child{border-bottom:none}
+.plan-limits .k{color:var(--gray-500);font-weight:500}
+.plan-limits .v{font-weight:700;text-align:right}
+
+/* ── TOGGLE ── */
+.toggle{display:inline-flex;background:var(--gray-100);border-radius:var(--radius-pill);padding:3px;margin-bottom:20px}
+.toggle button{border:none;background:transparent;font-family:var(--font);font-size:var(--text-sm);font-weight:600;
+  color:var(--gray-500);padding:7px 18px;border-radius:var(--radius-pill);cursor:pointer;transition:all .15s ease}
+.toggle button.on{background:#fff;color:var(--bold-navy);box-shadow:var(--shadow-sm)}
+.toggle button:active{transform:scale(.97)}
+
+/* ── SIM ── */
+.sim{background:var(--bold-navy);border-radius:var(--radius-lg);padding:24px 26px;color:#fff}
+.sim h4{color:#fff;margin:0 0 4px}
+.sim .sub{font-size:var(--text-sm);color:#A8B6DE;margin-bottom:20px}
+.sim-row{display:flex;gap:22px;flex-wrap:wrap;align-items:flex-end}
+.sim-f{flex:1;min-width:170px}
+.sim-f label{display:block;font-size:var(--text-xs);font-weight:700;text-transform:uppercase;
+  letter-spacing:.08em;color:#8FA6E8;margin-bottom:7px}
+.sim-f input{width:100%;font-family:var(--font);font-size:var(--text-lg);font-weight:700;padding:9px 12px;
+  border-radius:var(--radius-sm);border:none;background:rgba(255,255,255,.12);color:#fff}
+.sim-f input:focus{outline:2px solid var(--bold-red)}
+.sim-out{margin-top:22px;background:rgba(255,255,255,.09);border-radius:var(--radius-md);padding:16px 18px}
+.sim-plan{font-size:var(--text-xl);font-weight:700}
+.sim-why{font-size:var(--text-sm);color:#C3CDE8;margin-top:6px}
+
+input[type=range]{width:100%;accent-color:var(--bold-red)}
+.chart-box{background:#fff;border:var(--border);border-radius:var(--radius-lg);padding:20px 22px;margin-bottom:18px}
+.chart-box canvas{max-height:260px}
+.filter-in{font-family:var(--font);font-size:var(--text-base);padding:9px 13px;border-radius:var(--radius-sm);
+  border:var(--border);width:280px;margin-bottom:12px}
+.filter-in:focus{outline:none;border-color:var(--bold-navy)}
+.src{font-size:var(--text-xs);color:var(--gray-400);line-height:1.6;margin-top:8px}
+.src a{color:var(--gray-500)}
+.q{background:#fff;border:var(--border);border-left:4px solid var(--bold-red);border-radius:var(--radius-md);
+  padding:15px 18px;margin-bottom:12px}
+.q-t{font-weight:700;margin-bottom:5px}
+.q-a{font-size:var(--text-sm);color:var(--gray-600)}
+.chk{list-style:none;margin-left:0}
+.chk li{display:flex;gap:10px;align-items:flex-start}
+.chk .ic{flex-shrink:0;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:11px;font-weight:700;margin-top:2px}
+.ic.y{background:var(--bold-green-light);color:#1E8449}
+.ic.n{background:var(--bold-red-light);color:#B02039}
+.ic.p{background:var(--bold-gold-light);color:#8A5A00}
+.hr{height:1px;background:var(--gray-200);margin:32px 0;border:none}
+.print-only{display:none}
+@media print{.sidebar,.topbar{display:none}main{max-width:100%;padding:0}.print-only{display:block}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div style="display:flex;align-items:center;gap:20px">
+    <div class="topbar-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" width="76" height="22" viewBox="0 0 96 28" fill="none">
+        <path d="M34.8998 18.1614H51.4505C51.0525 22.3658 47.4939 25.6666 43.1744 25.6666C38.855 25.6666 35.2971 22.3658 34.8991 18.1614H34.8998ZM23.0918 9.12923V25.6293C27.3069 25.2325 30.6189 21.6842 30.6189 17.3789C30.6189 13.0737 27.3069 9.52671 23.0918 9.12992V9.12923ZM43.1751 9.0919C38.8564 9.0919 35.2978 12.3941 34.8998 16.5985H51.4505C51.0525 12.3941 47.4939 9.0919 43.1744 9.0919H43.1751ZM14.7324 15.1143V25.6673H21.474V2.33398H14.7324V15.1143ZM74.8205 2.33398V25.6666H81.5621V2.33398H74.8205ZM65.724 17.3796C65.724 17.9036 65.7752 18.4151 65.8691 18.9122C66.5459 22.4999 69.5488 25.2802 73.2518 25.6286V9.12923C69.0367 9.52602 65.7247 13.0743 65.7247 17.3796H65.724ZM54.8598 25.6666H61.6014V2.33398H54.8598V25.6666Z" fill="url(#lg)"/>
+        <defs><linearGradient id="lg" x1="81.5621" y1="14.0007" x2="14.7324" y2="14.0006" gradientUnits="userSpaceOnUse">
+          <stop offset="0.045" stop-color="#FF2947"/><stop offset="0.8" stop-color="#121E6C"/></linearGradient></defs>
+      </svg>
+    </div>
+    <span class="topbar-pill">Pricing Restaurantes</span>
+  </div>
+  <div class="topbar-meta">
+    <span>Borrador v1 · 18 ago 2026</span>
+    <span class="b b-navy">Interno</span>
+  </div>
+</div>
+
+<div class="app-body">
+<aside class="sidebar">
+  <div class="sb-label">Diagnóstico</div>
+  <a class="sb-link" href="#s0"><span class="sb-num">00</span>Resumen de decisiones</a>
+  <a class="sb-link" href="#s1"><span class="sb-num">01</span>Insumos y método</a>
+  <a class="sb-link" href="#s2"><span class="sb-num">02</span>Qué dice la data del piloto</a>
+  <a class="sb-link" href="#s3"><span class="sb-num">03</span>Benchmark de competencia</a>
+  <div class="sb-label">Las tres métricas</div>
+  <a class="sb-link" href="#s4"><span class="sb-num">04</span>Usuarios y tipos de usuario</a>
+  <a class="sb-link" href="#s5"><span class="sb-num">05</span>Límite de mesas: ¿viable?</a>
+  <a class="sb-link" href="#s6"><span class="sb-num">06</span>Facturación electrónica</a>
+  <div class="sb-label">Los esquemas</div>
+  <a class="sb-link" href="#s7"><span class="sb-num">07</span>Esquema 2026</a>
+  <a class="sb-link" href="#s8"><span class="sb-num">08</span>Esquema 2027</a>
+  <a class="sb-link" href="#s9"><span class="sb-num">09</span>Add-ons</a>
+  <a class="sb-link" href="#s10"><span class="sb-num">10</span>Periodicidad y descuentos</a>
+  <div class="sb-label">Ejecución</div>
+  <a class="sb-link" href="#s11"><span class="sb-num">11</span>Migración del piloto</a>
+  <a class="sb-link" href="#s12"><span class="sb-num">12</span>Lo que faltó en la reunión</a>
+  <a class="sb-link" href="#s13"><span class="sb-num">13</span>Riesgos y supuestos</a>
+  <a class="sb-link" href="#s14"><span class="sb-num">14</span>Decisiones que necesito</a>
+  <a class="sb-link" href="#s15"><span class="sb-num">15</span>Fuentes</a>
+</aside>
+
+<main>
+
+<div class="hero">
+  <div class="hero-eyebrow">Bold POS · Vertical Restaurantes · Q4 2026</div>
+  <h1>Esquema de planes 2026 y 2027</h1>
+  <p>Propuesta de pricing construida sobre la reunión del 14 de agosto, el draft de Bryan, el research competitivo de Juan y la data real del piloto en Mixpanel (julio–agosto 2026). Cada límite propuesto tiene detrás un número.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><span>70</span><small>Comercios activos piloto</small></div>
+    <div class="hero-stat"><span>24.240</span><small>Ventas/mes proyectadas</small></div>
+    <div class="hero-stat"><span>15,7%</span><small>De ventas son FE</small></div>
+    <div class="hero-stat"><span>1,3</span><small>Usuarios por comercio</small></div>
+    <div class="hero-stat"><span>$955k</span><small>Ticket promedio jul-26</small></div>
+  </div>
+</div>
+
+<!-- ══════════ 00 ══════════ -->
+<section id="s0">
+  <div class="sec-head"><span class="sec-num">00</span><h2>Resumen de decisiones</h2></div>
+  <p class="lede">Si solo lees una sección, que sea esta. Diez decisiones, cada una con su fundamento en las secciones siguientes.</p>
+
+  <div class="callout c-rec">
+    <span class="ct">La tesis en una frase</span>
+    <p><strong>Actualizado con el export de mesas (266 comercios):</strong> la barrera por mesas que la reunión eligió como principal no sobrevive al contraste con la data. Ver §05 — es el cambio más importante respecto de la versión anterior de este documento.</p><p>El draft de precios <strong>no está mal — está adelantado un año</strong>. Los números del draft ($917k / $1.529M / $2.345M) son el objetivo <strong>2027</strong>, cuando el 100% de las features exista. Para <strong>2026</strong> hay que comprimir la escalera y cobrar por <em>capacidad</em> (usuarios, mesas, documentos) y <em>servicio</em>, no por features que no están desarrolladas.</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th style="width:32px">#</th><th>Decisión</th><th style="width:38%">Fundamento en una línea</th><th style="width:90px">Sección</th></tr></thead>
+      <tbody>
+        <tr><td class="num">1</td><td><strong>Tres planes: Starter / Pro / Plus.</strong> En 2026 se diferencian por capacidad y servicio, no por features.</td><td>Cobrar por features inexistentes es la única forma garantizada de quemar la credibilidad en Q4.</td><td><a href="#s7">07</a></td></tr>
+        <tr><td class="num">2</td><td><strong>Precios 2026: $89.900 / $126.900 / $185.900 mensual</strong> ($917k / $1.294M / $1.896M anual con −15%).</td><td>Pro queda prácticamente en el precio del plan piloto ($1.287M) → renovación sin fricción para los 70 comercios actuales.</td><td><a href="#s7">07</a></td></tr>
+        <tr><td class="num">3</td><td><strong>Se elimina «cajas / turnos» como barrera.</strong> Confirmado de la reunión.</td><td>Un restaurante de barrio y S4 Waffles tienen una caja cada uno. La caja no discrimina tamaño en restó.</td><td><a href="#s4">04</a></td></tr>
+        <tr><td class="num">4</td><td><strong>Se crea el rol «Mesero» (PIN, sin usuario completo) y NO se cobra 1:1.</strong> Cupo generoso: 3 / 10 / ilimitados.</td><td>Si cobramos por mesero, matamos la estrategia de «un Smart Pro por mesero», que es justo nuestro diferenciador.</td><td><a href="#s4">04</a></td></tr>
+        <tr class="row-hl"><td class="num">5</td><td><strong>Mesas sale del pricing.</strong> Solo un tope antiabuso de 100 mesas, igual en los tres planes, fuera de la página de precios.</td><td><strong>Cambió con la data nueva.</strong> El 57% de la base tiene el default de 12 mesas intacto y la correlación mesas↔ventas es 0,03. Un cupo por mesas le cobraría Plus a un negocio de 3 ventas/mes.</td><td><a href="#s5">05</a></td></tr>
+        <tr><td class="num">6</td><td><strong>FE limitada solo en Starter (300/mes). Pro y Plus ilimitadas.</strong> Bolsas extra de +100 / +300 / +1.000.</td><td>El 89% de los comercios que emiten FE en el piloto está por debajo de 200/mes. El límite no muerde a nadie y crea un gatillo de upgrade limpio.</td><td><a href="#s6">06</a></td></tr>
+        <tr><td class="num">7</td><td><strong>Nunca bloquear FE en medio del servicio.</strong> Límite blando: avisar al 80%, cobrar la bolsa después.</td><td>Bloquear a un restaurante un sábado a las 9 pm es un ticket de cancelación, no un upsell.</td><td><a href="#s6">06</a></td></tr>
+        <tr><td class="num">8</td><td><strong>Máximo 3 add-ons visibles en la página de precios.</strong> El resto, en la conversación comercial.</td><td>El IPC dice literalmente que los restaurantes desconfían del cobro por módulos y prefieren precio claro todo incluido.</td><td><a href="#s9">09</a></td></tr>
+        <tr><td class="num">9</td><td><strong>«Soporte Turno Pico» (fines de semana / fuera de horario) es el add-on con más convicción.</strong></td><td>Es el único add-on que alguien en la reunión dijo que pagaría de su bolsillo. Y reemplaza al inviable «soporte prioritario».</td><td><a href="#s9">09</a></td></tr>
+        <tr><td class="num">10</td><td><strong>Mensual solo en Starter como prueba controlada.</strong> Anual (−15%) y semestral (−8%) siguen siendo el riel principal.</td><td>Mensual reduce fricción de adquisición, pero abrirlo en Pro/Plus canibaliza el flujo de caja y el ticket promedio que apenas subió a $955k.</td><td><a href="#s10">10</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout c-risk">
+    <span class="ct">Tres cosas que hay que arreglar antes de vender</span>
+    <p><strong>1. No hay telemetría de mesas ni de usuarios creados.</strong> No existe ningún evento de mesa o zona en Mixpanel. No podemos medir, monitorear ni hacer cumplir ninguno de los límites propuestos. Instrumentar es prerrequisito, no «nice to have».<br>
+    <strong>2. El ticket promedio de $955k está construido sobre data sucia.</strong> En la misma reunión salieron comercios facturando el año y cobrando la mitad. No se debería fijar el precio final sobre ese promedio hasta que Nico cierre la revisión de NITs.<br>
+    <strong>3. CxC / ventas a crédito no es un add-on, es un bloqueador de renovación.</strong> Hay al menos 5 comercios del piloto cuya suscripción depende de eso (Dolces Antojos ya lo dijo explícitamente). Va en base, en los tres planes.</p>
+  </div>
+</section>
+
+<!-- ══════════ 01 ══════════ -->
+<section id="s1">
+  <div class="sec-head"><span class="sec-num">01</span><h2>Insumos y método</h2></div>
+  <p class="lede">Qué leí, qué consulté y de dónde sale cada número de este documento.</p>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="label">Insumos que me diste</div>
+      <ul class="chk">
+        <li><span class="ic y">✓</span><div><strong>Transcripción reunión 14-ago</strong> — leída completa (55 min). Extraje 8 acuerdos, 8 próximos pasos y 6 temas que quedaron sin cerrar (§12).</div></li>
+        <li><span class="ic y">✓</span><div><strong>Draft de pricing</strong> — los 3 tiers, el plan piloto, las 4 preguntas abiertas y la lista de add-ons. Las 4 preguntas están respondidas en §14.</div></li>
+        <li><span class="ic y">✓</span><div><strong>PDF de research competitivo</strong> (Fudo, Loggro, Siigo, Bold POS) — matriz de 24 atributos.</div></li>
+        <li><span class="ic y">✓</span><div><strong>Mixpanel</strong> proyecto 2986365 — 6 queries sobre julio y agosto 2026 filtradas por los planes de restaurante.</div></li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="label">Insumos que agregué</div>
+      <ul class="chk">
+        <li><span class="ic y">✓</span><div><strong>PRD POS Restaurantes Fase 1</strong> — inventario real de funcionalidades V1 y el límite técnico de mesas (400–500) que nadie mencionó en la reunión.</div></li>
+        <li><span class="ic y">✓</span><div><strong>#pos-solicitudes</strong> — 300+ solicitudes de comercios. De aquí salen los bloqueadores de renovación (CxC, venta mostrador, traslado de mesas).</div></li>
+        <li><span class="ic y">✓</span><div><strong>IPC Bold POS Restaurantes</strong> — comportamiento de compra y sensibilidad a modelos de precios.</div></li>
+        <li><span class="ic y">✓</span><div><strong>Research web fresco</strong> de Fudo, Loggro, Alegra, Siigo y Paxioli sobre cómo acotan FE y mesas (§03, §15).</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Cómo leer los planes de restaurante en Mixpanel</h3>
+  <p>Los comercios del piloto viven en cuatro <code>Plan Type</code>: <code>RESTAURANTE_ILIMITADO</code> (el grueso), <code>RESTAURANTE_BASIC</code>, <code>RESTAURANTE_BASIC_SEMESTRAL</code> y <code>FREE_TRIAL_RESTAURANTE</code>. Todas las cifras de este documento filtran por <code>Plan Type contiene "RESTAURANTE"</code>.</p>
+  <p>Los eventos relevantes son <code>Create Income (Sale + Invoice)</code> = toda venta cerrada (comprobante o factura), <code>Create Invoice</code> = factura electrónica emitida, y <code>Create Order</code> = orden abierta en mesa.</p>
+
+  <div class="callout c-warn">
+    <span class="ct">Hallazgo colateral, pero importante</span>
+    <p>Ya existe un <code>RESTAURANTE_BASIC_SEMESTRAL</code> con transacciones. La pregunta 3 del draft («¿todas las suscripciones serán anuales o tendremos semestrales?») ya tiene respuesta de facto: <strong>el semestral ya se está vendiendo en restaurantes</strong>. La decisión no es si existe, es si lo mantenemos y a qué descuento.</p>
+  </div>
+</section>
+
+<!-- ══════════ 02 ══════════ -->
+<section id="s2">
+  <div class="sec-head"><span class="sec-num">02</span><h2>Qué dice la data del piloto</h2></div>
+  <p class="lede">Esta es la parte que cambia decisiones. El piloto es pequeño, pero suficiente para descartar dos de las tres barreras que estábamos considerando.</p>
+
+  <div class="grid4">
+    <div class="metric"><div class="metric-val">52 → 70</div><div class="metric-lbl">Comercios con actividad</div><div class="metric-note">Julio → agosto (1–17). Crecimiento de 35% en comercios activos.</div></div>
+    <div class="metric"><div class="metric-val">11.886</div><div class="metric-lbl">Ventas julio 2026</div><div class="metric-note">Agosto proyecta 24.240/mes: la base está duplicando volumen mes a mes.</div></div>
+    <div class="metric"><div class="metric-val">15,7%</div><div class="metric-lbl">Ratio FE / ventas</div><div class="metric-note">1.862 FE sobre 11.886 ventas. El resto son comprobantes.</div></div>
+    <div class="metric"><div class="metric-val">37%</div><div class="metric-lbl">Comercios que emiten FE</div><div class="metric-note">19 de 52 en julio. Casi dos tercios operan solo con comprobante.</div></div>
+  </div>
+
+  <h3>Distribución de volumen por comercio (julio 2026)</h3>
+  <div class="grid2">
+    <div class="chart-box"><div class="label">Ventas por comercio — cuántos comercios en cada rango</div><canvas id="chVentas"></canvas></div>
+    <div class="chart-box"><div class="label">Usuarios activos por comercio (ago 1–17)</div><canvas id="chUsers"></canvas></div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Percentil de ventas/mes</th><th class="num">Ventas</th><th class="num">FE (solo emisores)</th><th>Lectura</th></tr></thead>
+      <tbody>
+        <tr><td>Mediana (p50)</td><td class="num">75</td><td class="num">42</td><td>La mitad del piloto hace menos de 3 ventas al día. Muchos apenas onboardearon.</td></tr>
+        <tr><td>p75</td><td class="num">183</td><td class="num">117</td><td>Restaurante de barrio típico.</td></tr>
+        <tr><td>p90</td><td class="num">404</td><td class="num">202</td><td>Aquí empieza el segmento «Pro».</td></tr>
+        <tr class="row-hl"><td>p95</td><td class="num">~800</td><td class="num">~430</td><td>Zona de decisión para las bolsas de FE.</td></tr>
+        <tr><td>Máximo</td><td class="num">4.171</td><td class="num">647</td><td>El Rincón de Andrés: 4.171 ventas en julio. El outlier que define «Plus».</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout c-risk">
+    <span class="ct">Consecuencia directa para el draft</span>
+    <p>El draft define Starter como «negocios que facturan 100–300 tickets/mes». Con la data real, <strong>ese corte deja al 82% del piloto dentro de Starter</strong> ($917k/año), es decir <strong>por debajo del ticket promedio actual de $955k</strong>. Si segmentamos por volumen de tickets, el lanzamiento es un downgrade neto de la base. Hay que segmentar por otra cosa.</p>
+  </div>
+
+  <h3>Los tres hallazgos que mueven la aguja</h3>
+
+  <div class="callout c-data">
+    <span class="ct">Hallazgo 1 — Nadie usa múltiples usuarios</span>
+    <p>90 usuarios únicos repartidos en 70 comercios: <strong>1,3 usuarios por comercio</strong>. La moda es 1 usuario (56 de 70 comercios). El máximo observado es 4. Un cupo de 2 / 5 / ilimitados <strong>no le aprieta a prácticamente nadie hoy</strong>. Eso es bueno para la fricción de venta y terrible como palanca de monetización 2026.</p>
+  </div>
+
+  <div class="callout c-data">
+    <span class="ct">Hallazgo 2 — La FE es la única dimensión con dispersión real</span>
+    <p>De 1 a 647 FE/mes entre comercios. Es la métrica con más varianza y con costo marginal real para Bold (cada documento se paga al proveedor tecnológico). Es la única de las tres candidatas que <em>tiene</em> potencial de monetización hoy.</p>
+  </div>
+
+  <div class="callout c-data">
+    <span class="ct">Hallazgo 3 — El piloto no es solo «restaurantes»</span>
+    <p>Mirando los nombres: NAN2 Licobar, Licoexpress San Antonio, Ay Ombe Be Licoexpress, Verbena Licoexpress, Jaque Mate Licores, Licorera Elite, Panadería Verona, Dulces Rocakes. <strong>Una porción significativa del piloto son licoreras, panaderías y cafeterías de mostrador</strong>, que casi no usan el mapa de mesas. Cualquier barrera basada en mesas les cobra por algo que no consumen. Esto es central para §05.</p>
+  </div>
+
+  <h3>Detalle por comercio</h3>
+  <p style="font-size:var(--text-sm);color:var(--gray-500)">Datos crudos de Mixpanel. «FE ago proy.» extrapola los 17 días de agosto a mes completo (×1,82). Filtra por nombre y ordena haciendo clic en los encabezados.</p>
+  <input class="filter-in" id="fMerch" placeholder="Filtrar comercio…" oninput="filterMerch()">
+  <div class="tbl-wrap" style="max-height:440px">
+    <table id="tMerch">
+      <thead><tr>
+        <th class="sortable" onclick="sortMerch(0)">Comercio</th>
+        <th class="sortable num" onclick="sortMerch(1)">Ventas jul</th>
+        <th class="sortable num" onclick="sortMerch(2)">FE jul</th>
+        <th class="sortable num" onclick="sortMerch(3)">Ventas ago (17d)</th>
+        <th class="sortable num" onclick="sortMerch(4)">FE ago (17d)</th>
+        <th class="sortable num" onclick="sortMerch(5)">FE ago proy./mes</th>
+        <th>Plan sugerido</th>
+      </tr></thead>
+      <tbody id="tbMerch"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════ 03 ══════════ -->
+<section id="s3">
+  <div class="sec-head"><span class="sec-num">03</span><h2>Benchmark: cómo acota la competencia</h2></div>
+  <p class="lede">Aquí hay una corrección importante a lo que se dijo en la reunión. Sí existe cobro por ingresos, y es el estándar del mercado colombiano.</p>
+
+  <div class="callout c-warn">
+    <span class="ct">Corrección al research</span>
+    <p>En la reunión se concluyó que «por ingresos no encontré mucho». La búsqueda actualizada muestra lo contrario: <strong>Loggro Restobar y Alegra ambos acotan la facturación electrónica por rango de ingresos mensuales</strong>, no por número de documentos. Es el modelo dominante en Colombia. Lo desarrollo en §06 porque cambia la recomendación de 2027.</p>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Software</th><th>¿Cómo acota la FE?</th><th>¿Cómo acota mesas?</th><th>¿Cómo acota usuarios?</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Fudo</strong></td><td>FE como módulo aparte, costo variable</td><td class="row-hl"><strong>Sí — el plan ES por mesas:</strong> Básico ≤20, Estándar ≤60, Full >60. El sistema mide las mesas usadas cada mes y sube o baja el plan automáticamente.</td><td>Usuarios ilimitados en todos los planes</td></tr>
+        <tr><td><strong>Loggro Restobar</strong></td><td><strong>Por ingresos:</strong> ilimitadas hasta $10M/mes (Básico), hasta $50M/mes (Estándar), sin tope (Premium). Solo en compras a 12 meses.</td><td>No limita mesas</td><td>Limita cajas: caja adicional $43.990/mes</td></tr>
+        <tr><td><strong>Alegra</strong> (POS + facturación)</td><td><strong>Por ingresos:</strong> bandas de $10M / $40M / $180M / $500M mensuales. Facturas siempre ilimitadas dentro de la banda.</td><td>No aplica (no es vertical restó)</td><td>Por plan; usuario del contador gratis</td></tr>
+        <tr><td><strong>Siigo</strong></td><td>Documentos electrónicos ilimitados en planes profesionales</td><td>No limita mesas</td><td>Por número de usuarios</td></tr>
+        <tr><td><strong>Paxioli</strong></td><td><strong>Por documentos DIAN al año</strong>, sin tope de ingresos</td><td>No aplica</td><td>—</td></tr>
+        <tr class="row-hl"><td><strong>Bold POS hoy</strong></td><td>«FE ilimitada» como ventaja declarada + SKUs de paquetes de <strong>100 y 300 documentos</strong> ya en producción</td><td>No limita. El PRD deja la pregunta sin responder; solo menciona un techo técnico de 400–500 mesas</td><td>Piloto: usuarios ilimitados</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid2">
+    <div class="callout c-rec" style="margin-top:0">
+      <span class="ct">Lo que sí podemos copiar</span>
+      <p>El <strong>auto-ajuste de plan por uso real</strong> de Fudo. En vez de bloquear al comercio cuando pasa el límite, el sistema mide lo que usó y ajusta el plan el mes siguiente, hacia arriba o hacia abajo. Es honesto, no genera fricción en hora pico y monetiza el crecimiento automáticamente. Requiere facturación mensual o prorrateo, así que es un tema de 2027.</p>
+    </div>
+    <div class="callout c-risk" style="margin-top:0">
+      <span class="ct">Lo que no deberíamos copiar</span>
+      <p>La estructura de módulos de Fudo. Su precio de lista es bajo pero con mesas + KDS + delivery + FE la operación real llega a ~$245.600/mes. El IPC de Bold dice explícitamente que los restaurantes <strong>desconfían de los esquemas de cobro por módulos</strong> y prefieren precio claro todo incluido. Ese es nuestro ángulo de ataque, no algo que imitar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 04 ══════════ -->
+<section id="s4">
+  <div class="sec-head"><span class="sec-num">04</span><h2>Usuarios: cuántos y de qué tipo</h2></div>
+  <p class="lede">La reunión llegó a la conclusión correcta pero no la aterrizó en números. Aquí está el modelo de dos clases de usuario y los cupos, con el porqué de cada uno.</p>
+
+  <h3>El problema real</h3>
+  <p>Hoy en restaurantes cada mesero necesita un <strong>usuario completo</strong>. En retail existe la figura de asignar la venta a un «vendedor» sin que esa persona tenga usuario ni turno; en restaurantes eso se quitó. Nico lo dijo en la reunión: lo que los restaurantes necesitan no es que cada mesero tenga cuenta, es <strong>saber a quién asignarle la venta</strong> — trazabilidad, porque hay mucho robo.</p>
+  <p>Y Juan puso el dedo en la contradicción: queremos empujar que <strong>cada mesero tenga su Smart Pro</strong> y cobre en la mesa, porque ahí está nuestra diferenciación. Si limitamos usuarios agresivamente, estamos poniéndole precio justo a la conducta que queremos provocar.</p>
+
+  <h3>Modelo propuesto: dos clases de usuario</h3>
+  <div class="grid2">
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+        <span class="b b-navy">Clase A</span><strong style="font-size:var(--text-md)">Usuario de gestión</strong>
+      </div>
+      <p style="font-size:var(--text-sm);margin-bottom:10px">Login con correo y contraseña. Roles configurables: administrador, cajero, contador, compras. Ve reportes, inventario, configuración, ventas de todos.</p>
+      <p style="font-size:var(--text-sm);color:var(--gray-500);margin-bottom:0"><strong>Se cuenta y se limita.</strong> Es el usuario que revela el tamaño administrativo del negocio y el que consume soporte.</p>
+    </div>
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+        <span class="b b-new">Clase B · nuevo</span><strong style="font-size:var(--text-md)">Perfil Mesero</strong>
+      </div>
+      <p style="font-size:var(--text-sm);margin-bottom:10px">Acceso por PIN, sin cuenta de correo. Alcance <em>front of the house</em>: abrir mesa, tomar comanda, imprimir, cobrar, cerrar su propio turno, ver solo sus ventas y sus propinas.</p>
+      <p style="font-size:var(--text-sm);color:var(--gray-500);margin-bottom:0"><strong>Cupo generoso, no 1:1.</strong> No es un asiento de software, es una etiqueta de trazabilidad.</p>
+    </div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Plan</th><th class="num">Usuarios de gestión</th><th class="num">Perfiles mesero</th><th>Por qué ese número</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Starter</strong></td><td class="num">2</td><td class="num">3</td><td>El draft proponía 1. Con 1 usuario el dueño tiene que compartir credenciales con quien atiende, y pierde exactamente la trazabilidad que vino a buscar. Dos es el mínimo funcional: dueño + operación. Coincide con lo que Juan y Bryan concluyeron en vivo.</td></tr>
+        <tr class="row-hl"><td><strong>Pro</strong></td><td class="num">5</td><td class="num">10</td><td>El draft proponía 3 + 2 de caja. Al eliminar la barrera de cajas, se consolida en 5 de gestión. Cubre dos turnos (dos administradores/cajeros) + contador + dueño + uno de reserva. Ningún comercio del piloto pasa de 4 usuarios activos hoy.</td></tr>
+        <tr><td><strong>Plus</strong></td><td class="num">Ilimitados</td><td class="num">Ilimitados</td><td>Alto volumen y multi-sede. El costo de administrar el cupo supera lo que se puede cobrar por él.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout c-warn">
+    <span class="ct">Ojo con el benchmark de usuarios</span>
+    <p>Juan pidió revisar si estábamos bajos. Respuesta: <strong>sí, contra Fudo estamos bajos</strong> — Fudo da usuarios ilimitados en todos sus planes y monetiza por mesas. Loggro monetiza por cajas. Si vamos a cobrar por usuarios de gestión con cupos de 2/5, el mensaje de venta tiene que ser «meseros ilimitados o casi», porque es ahí donde el prospecto compara.</p>
+  </div>
+
+  <div class="callout c-risk">
+    <span class="ct">Dependencia de producto — bloqueante</span>
+    <p>El rol Mesero <strong>no existe</strong>. Sin él, el esquema de dos clases no se puede vender y el cupo de gestión (2 en Starter) se vuelve una limitación dura y agresiva, porque cada mesero consumiría un asiento. <strong>Si el rol Mesero no está listo para Q4, Starter debe salir con 3 usuarios de gestión, no 2.</strong></p>
+  </div>
+
+  <div class="callout c-rec">
+    <span class="ct">Decisión pendiente que recomiendo tomar ya</span>
+    <p>La reunión dejó abierto si <strong>modificadores y adicionales</strong> quedan restringidos o abiertos a todos. Recomiendo <strong>abiertos a todos</strong>: es una funcionalidad de captura de pedido, no de gestión; sin ella el mesero escribe el «sin cebolla» en el campo de nota libre y perdemos la estructura del dato. Igual que combos y propinas, que ya se acordó que van por default.</p>
+  </div>
+</section>
+
+<!-- ══════════ 05 ══════════ -->
+<section id="s5">
+  <div class="sec-head"><span class="sec-num">05</span><h2>Límite de mesas: la data dice que no</h2></div>
+  <p class="lede">Esta sección se reescribió con el export de <code>companies_restaurant.xlsx</code> (266 comercios de la vertical). La conclusión anterior era «sí, pero medido en 2027». Con la data en la mano, la conclusión cambia: <strong>mesas no sirve como métrica de pricing</strong>, y hay tres razones independientes, cada una suficiente por sí sola.</p>
+
+  <div class="grid3">
+    <div class="metric" style="border-left:4px solid var(--bold-red)">
+      <div class="metric-val">57%</div>
+      <div class="metric-lbl">Nunca tocó la configuración</div>
+      <div class="metric-note">152 de 266 comercios tienen exactamente <strong>12 mesas</strong>, y 147 de esos tienen las 12 activas. Es el default de onboarding, intacto. Cobrar por mesas sería cobrar por nuestra configuración inicial, no por su negocio.</div>
+    </div>
+    <div class="metric" style="border-left:4px solid var(--bold-red)">
+      <div class="metric-val">0,03</div>
+      <div class="metric-lbl">Correlación mesas ↔ ventas</div>
+      <div class="metric-note">Spearman sobre los 47 comercios con mesas y ventas. Es <strong>cero</strong>. Pearson 0,19, arrastrado por un solo outlier. La hipótesis central de la reunión —que las mesas revelan el tamaño del negocio— no se sostiene.</div>
+    </div>
+    <div class="metric" style="border-left:4px solid var(--bold-red)">
+      <div class="metric-val">12,4%</div>
+      <div class="metric-lbl">Usa el mapa interactivo</div>
+      <div class="metric-note">Solo 33 de 266 comercios tienen al menos una mesa con layout. En total hay <strong>344 mesas dibujadas de 4.359</strong> (7,9%). El «Orquestador» del PRD está sin estrenar.</div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="chart-box"><div class="label">Distribución de mesas configuradas — 266 comercios</div><canvas id="chMesas"></canvas></div>
+    <div class="chart-box"><div class="label">Mesas vs. ventas/mes — 47 comercios con ambos datos</div><canvas id="chScatter"></canvas></div>
+  </div>
+
+  <h3>1. La mayoría de los datos de mesas no son datos</h3>
+  <p>El valor 12 aparece en 152 comercios y en 147 de ellos las 12 están activas, sin una sola desactivación. No es una coincidencia estadística: es el valor por defecto que el sistema crea en el onboarding y que más de la mitad de la base nunca modificó.</p>
+  <p>Esto tiene una implicación incómoda: si publicáramos un cupo de 15 mesas en Starter, <strong>el 68% de la base quedaría exactamente en la mitad del rango</strong> no porque tenga 12 mesas, sino porque nunca abrió esa pantalla. Y el día que un comercio decide dibujar su local de verdad —que es justo la conducta que queremos— se pasaría del cupo y le cobraríamos por ello. Estaríamos penalizando la activación de la feature.</p>
+
+  <h3>2. Las mesas no predicen nada</h3>
+  <p>Bryan tenía razón y el argumento de Juan no sobrevive al contraste con la data. Estos son los pares reales:</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Comercio</th><th class="num">Mesas</th><th class="num">Mesas activas</th><th class="num">Ventas/mes</th><th>Qué muestra</th></tr></thead>
+      <tbody>
+        <tr class="row-hl"><td>CHOCOFRUTIKIDS SAS</td><td class="num">71</td><td class="num">62</td><td class="num">3</td><td>Con un cupo por mesas pagaría <strong>Plus</strong>. Hace <strong>3 ventas al mes</strong>.</td></tr>
+        <tr><td>Verbena Licoexpress</td><td class="num">51</td><td class="num">29</td><td class="num">28</td><td>Mismo caso: muchas mesas, negocio mínimo.</td></tr>
+        <tr><td>Salsa Cámara Restaurante Bar</td><td class="num">90</td><td class="num">89</td><td class="num">275</td><td>El que más mesas tiene de toda la base es un comercio de volumen medio.</td></tr>
+        <tr><td>Berlín Bar</td><td class="num">53</td><td class="num">16</td><td class="num">202</td><td>Configuró 53 y usa 16. Ni siquiera <code>active_tables</code> lo salva.</td></tr>
+        <tr class="row-hl"><td>Cadillero Coffee Shop</td><td class="num">7</td><td class="num">7</td><td class="num">1.188</td><td>Con un cupo por mesas pagaría <strong>Starter</strong>. Es de los diez que más venden.</td></tr>
+        <tr class="row-hl"><td>La Sazón de Doña Julia</td><td class="num">14</td><td class="num">11</td><td class="num">1.458</td><td>Segundo mayor volumen proyectado de la base. Cabría en Starter sin despeinarse.</td></tr>
+        <tr><td>Mi Lechoncito</td><td class="num">11</td><td class="num">11</td><td class="num">817</td><td>Alto volumen, once mesas.</td></tr>
+        <tr><td>El Rincón de Andrés</td><td class="num">72</td><td class="num">51</td><td class="num">4.171</td><td>El único caso donde muchas mesas coinciden con mucho volumen. Es <em>el</em> outlier que infla el Pearson.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Un cupo de mesas le cobraría el plan más caro a un negocio de 3 ventas mensuales y dejaría en el plan de entrada a dos de los comercios que más facturan. No es que la métrica sea imprecisa: <strong>está invertida en los casos que más importan</strong>.</p>
+
+  <h3>3. El mapa de mesas casi no se usa</h3>
+  <p>Solo 33 comercios han dibujado al menos una mesa en el lienzo, y entre todos suman 344 mesas con layout sobre 4.359 configuradas. Las formas no cuadradas —el gesto de personalización más claro— aparecen en 32 comercios y 214 mesas.</p>
+  <p>Hay un patrón dentro del patrón: entre los que dejaron el default de 12, la adopción del layout es del <strong>1,3%</strong>; entre los que sí tocaron la configuración de mesas, sube al <strong>36–38%</strong>. Tocar la configuración y usar el mapa son la misma conducta.</p>
+
+  <div class="callout c-warn">
+    <span class="ct">Pregunta abierta para producto, no para pricing</span>
+    <p>Este 12,4% admite dos lecturas y la data no distingue entre ellas: (a) la feature es reciente o está escondida y falta descubrimiento, o (b) los comercios no la necesitan porque el listado de mesas les basta. <strong>La respuesta cambia el roadmap, no el pricing</strong> —en ninguno de los dos escenarios se puede cobrar por mesas—, pero sí cambia qué tan fuerte podemos gritar «mapa visual de mesas» en la página de precios. Hoy es nuestro titular de venta y lo usa uno de cada ocho comercios.</p>
+  </div>
+
+  <h3>Qué hago con esto</h3>
+  <div class="callout c-rec">
+    <span class="ct">Mesas sale del pricing y entra como guardarraíl</span>
+    <p><strong>Las mesas dejan de ser una barrera de plan.</strong> No se mencionan como beneficio diferencial, no se venden como add-on «+10 mesas», y no se calibran cortes por tier.</p>
+    <p>En su lugar, un <strong>tope antiabuso único y generoso</strong>, igual para los tres planes: <strong>100 mesas</strong>. Hoy no lo alcanza <em>ningún</em> comercio de los 266 —el máximo es 90— y su único propósito es proteger la infraestructura, no monetizar. Se documenta en términos y condiciones, no en la página de precios.</p>
+    <p style="margin-bottom:0">Esto además resuelve el problema del techo técnico: el PRD menciona una limitante de 400–500 mesas, muy por encima de 100, así que el guardarraíl comercial queda holgadamente dentro de lo que el sistema soporta.</p>
+  </div>
+
+  <div class="callout c-data">
+    <span class="ct">Y el add-on «+10 mesas» se cancela</span>
+    <p>Estaba en §09 a $12.900/mes con anclaje en Fudo. Se elimina. Con 12 mesas de default y cero correlación con el negocio, ese add-on solo cobraría por abrir una pantalla de configuración. Sería el tipo de cobro por módulo que el IPC dice que genera desconfianza, y encima aplicado a algo sin valor percibido.</p>
+  </div>
+
+  <div class="callout c-neutral">
+    <span class="ct">Nota sobre Fudo</span>
+    <p>Que Fudo cobre por mesas sigue siendo cierto y sigue siendo un precedente de industria. Pero el precedente vale si la métrica funciona <em>en tu base</em>, y en la nuestra no funciona. Fudo lleva años en el segmento y probablemente su base tenga una distribución de mesas más limpia —o simplemente tolera la imprecisión porque su default no es 12 mesas para todo el mundo. Copiar la métrica sin verificarla contra nuestros datos habría sido el error.</p>
+  </div>
+</section>
+
+<!-- ══════════ 06 ══════════ -->
+<section id="s6">
+  <div class="sec-head"><span class="sec-num">06</span><h2>Facturación electrónica: los límites</h2></div>
+  <p class="lede">Este era el encargo explícito de la reunión. Aquí está la data, el benchmark y el modelo propuesto —incluyendo por qué recomiendo NO limitar FE en Pro y Plus.</p>
+
+  <h3>La data</h3>
+  <div class="grid2">
+    <div class="chart-box"><div class="label">FE mensuales por comercio emisor — julio 2026</div><canvas id="chFE"></canvas></div>
+    <div class="chart-box"><div class="label">Ratio FE / ventas por tipo de plan (julio 2026)</div><canvas id="chRatio"></canvas></div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Corte</th><th class="num">FE/mes</th><th class="num">% emisores cubiertos</th><th>Comercio de referencia</th></tr></thead>
+      <tbody>
+        <tr><td>Mediana</td><td class="num">42</td><td class="num">50%</td><td>La Florería, Franco Fast Food</td></tr>
+        <tr><td>p75</td><td class="num">117</td><td class="num">75%</td><td>Mi Pite, El Sarao Pub</td></tr>
+        <tr class="row-hl"><td><strong>Corte propuesto Starter</strong></td><td class="num"><strong>300</strong></td><td class="num"><strong>95%</strong></td><td>Solo El Rincón de Andrés (647) y Diego F. Ramírez (~1.077 proyectado) lo superan</td></tr>
+        <tr><td>Máximo julio</td><td class="num">647</td><td class="num">100%</td><td>El Rincón de Andrés</td></tr>
+        <tr><td>Máximo agosto proyectado</td><td class="num">~1.077</td><td class="num">—</td><td>Diego F. Ramírez Párraga: 592 FE en 17 días, 100% de sus ventas facturadas</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Modelo recomendado para 2026</h3>
+  <div class="callout c-rec">
+    <span class="ct">Limitar solo el plan de entrada</span>
+    <p><strong>Starter: 300 FE/mes incluidas. Pro y Plus: ilimitadas.</strong> Comprobantes y tiquetes POS ilimitados en los tres.</p>
+    <p>Tres razones:</p>
+    <ol style="margin-bottom:0">
+      <li><strong>Preserva el diferenciador.</strong> El PDF de research marca «FE DIAN ilimitada» como ventaja clave de Bold contra Fudo (módulo variable) y contra Loggro (ilimitada con costo adicional). Poner topes en los tres planes destruye ese mensaje justo cuando lo necesitamos.</li>
+      <li><strong>Es coherente con el IPC.</strong> Los restaurantes prefieren precio claro y todo incluido. Un tope en el plan barato se lee como «plan de entrada»; topes en todos se leen como «te van a cobrar extra».</li>
+      <li><strong>Crea un gatillo de upgrade limpio y automático.</strong> El comercio que pasa de 300 FE/mes es exactamente el que debería estar en Pro. No hay que convencerlo: su propia operación lo empuja.</li>
+    </ol>
+  </div>
+
+  <h3>Bolsas de documentos extra</h3>
+  <p>Bold ya tiene SKUs de <strong>100 y 300 documentos</strong> en producción (<code>DOCUMENTOS_ELECTRONICOS_100</code> y <code>_300</code>). Jessica propuso en la reunión irnos con rangos parecidos a los que ya vendemos. Estoy de acuerdo: <strong>reutilizar esos dos SKUs y agregar uno de 1.000</strong>, en vez de inventar una escala nueva.</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Bolsa</th><th>Uso previsto</th><th>Nota</th></tr></thead>
+      <tbody>
+        <tr><td><strong>+100 FE</strong></td><td>Comercio Starter con un mes atípico (temporada, evento)</td><td>SKU existente. Sin vencimiento dentro del período contratado.</td></tr>
+        <tr><td><strong>+300 FE</strong></td><td>Comercio Starter que creció y aún no quiere migrar a Pro</td><td>SKU existente. Si compra dos bolsas en tres meses, el CRM debería disparar oferta de upgrade a Pro.</td></tr>
+        <tr><td><strong>+1.000 FE</strong></td><td>Solo por si aparece un caso extremo. En el modelo recomendado, Pro y Plus no lo necesitan.</td><td>SKU nuevo. Crear solo si validamos que hace falta.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout c-risk">
+    <span class="ct">Regla de oro: nunca bloquear en hora pico</span>
+    <p>El límite tiene que ser <strong>blando</strong>: aviso al 80% del cupo, aviso al 100%, y los documentos siguen emitiéndose. La bolsa se cobra en el siguiente ciclo o se prorratea. Bloquear la emisión de una factura a un restaurante un viernes a las 9 pm no genera un upsell, genera una cancelación y una reseña negativa. El IPC identifica la inestabilidad del sistema en hora pico como el dolor #1 del segmento; un bloqueo comercial es indistinguible de una caída de servicio para el usuario.</p>
+  </div>
+
+  <h3>Simulador</h3>
+  <div class="sim">
+    <h4>¿Qué plan le corresponde a un comercio?</h4>
+    <div class="sub">Mueve los controles para ver dónde cae un prospecto según las tres métricas propuestas.</div>
+    <div class="sim-row">
+      <div class="sim-f"><label>FE por mes</label><input type="number" id="iFE" value="60" min="0" max="3000" oninput="sim()"></div>
+      <div class="sim-f"><label>Usuarios de gestión</label><input type="number" id="iU" value="2" min="1" max="50" oninput="sim()"></div>
+      <div class="sim-f"><label>Ventas/mes</label><input type="number" id="iM" value="120" min="0" max="6000" oninput="sim()"></div>
+      <div class="sim-f"><label>Sedes</label><input type="number" id="iS" value="1" min="1" max="30" oninput="sim()"></div>
+    </div>
+    <div class="sim-out">
+      <div class="sim-plan" id="oPlan">Starter</div>
+      <div class="sim-why" id="oWhy"></div>
+      <div class="sim-why" id="oPrice" style="margin-top:8px;color:#fff;font-weight:600"></div>
+    </div>
+  </div>
+
+  <h3>La pregunta abierta que hay que resolver con ingeniería</h3>
+  <div class="callout c-warn">
+    <span class="ct">¿Los comprobantes también cuestan?</span>
+    <p>Nico levantó el punto correcto en la reunión: en restaurantes la mayoría de las transacciones son comprobantes, no facturas. Pero en Colombia el <strong>tiquete POS electrónico también es un documento electrónico que se transmite a la DIAN</strong>. Si el proveedor tecnológico nos cobra por esos documentos, el driver de costo real no es 1.862 FE/mes sino <strong>11.886 documentos/mes</strong> — seis veces más, y con una distribución muy distinta (mediana 75, máximo 4.171).</p>
+    <p style="margin-bottom:0"><strong>Antes de publicar cualquier cupo hay que confirmar con el proveedor si el tiquete POS electrónico tiene costo marginal.</strong> Si lo tiene, la recomendación cambia: el cupo se define sobre «documentos electrónicos DIAN» totales y el corte de Starter sube a ~500 documentos/mes (cubre p85 de ventas totales).</p>
+  </div>
+
+  <h3>Para 2027: migrar a bandas de ingresos</h3>
+  <p>Loggro y Alegra no cuentan documentos, acotan por <strong>ingresos mensuales del comercio</strong>. Es superior por tres razones: el comercio no tiene que contar documentos, se autoescala con su crecimiento, y se comunica en una línea («facturas ilimitadas hasta $X de ventas al mes»). Bold tiene el dato de ventas en el propio POS, así que es medible sin instrumentación adicional.</p>
+  <p>Recomiendo evaluarlo para 2027 con bandas calibradas a la base restó: por ejemplo Starter hasta $15M/mes, Pro hasta $60M/mes, Plus sin tope. Requiere definir política de qué pasa cuando un comercio se pasa (Loggro exige compra a 12 meses para dar la FE ilimitada, lo cual es una forma elegante de amarrar el compromiso).</p>
+</section>
+
+<!-- ══════════ 07 ══════════ -->
+<section id="s7">
+  <div class="sec-head"><span class="sec-num">07</span><h2>Esquema 2026 — capacidades actuales</h2></div>
+  <p class="lede">Tres planes que se diferencian por <strong>capacidad y servicio</strong>, no por features. Ninguna funcionalidad de pago está condicionada a desarrollo pendiente.</p>
+
+  <div class="toggle" id="tg26">
+    <button class="on" onclick="setPer('m')">Mensual</button>
+    <button onclick="setPer('a')">Anual (−15%)</button>
+  </div>
+
+  <div class="plans">
+    <div class="plan">
+      <div class="plan-tier">Tier 1</div>
+      <div class="plan-name">Starter</div>
+      <div class="plan-who">Cafeterías, panaderías, food trucks, licoreras y bares de mostrador. Hasta ~300 ventas/mes. Un solo punto de venta.</div>
+      <div class="plan-price p26" data-m="$89.900" data-a="$917.000">$89.900</div>
+      <div class="plan-per per26">por mes</div>
+      <div class="plan-alt alt26">o $917.000/año con −15%</div>
+      <ul class="plan-limits">
+        <li><span class="k">Usuarios de gestión</span><span class="v">2</span></li>
+        <li><span class="k">Perfiles mesero (PIN)</span><span class="v">3</span></li>
+        <li><span class="k">Mesas y zonas</span><span class="v">Sin límite comercial</span></li>
+        <li><span class="k">Facturas electrónicas</span><span class="v">300 / mes</span></li>
+        <li><span class="k">Comprobantes / tiquetes</span><span class="v">Ilimitados</span></li>
+        <li><span class="k">Inventario</span><span class="v">Ilimitado</span></li>
+        <li><span class="k">Sedes</span><span class="v">1</span></li>
+        <li><span class="k">Implementación</span><span class="v">Autoservicio</span></li>
+      </ul>
+      <div class="plan-anchor"><strong>Anclaje:</strong> +43% sobre Bold POS Esencial ($963k) y por debajo de Loggro Básico ($120.990/mes). El sobreprecio se justifica con mapa de mesas, comandas, propinas DIAN y el ecosistema Bold (datáfono + Bold CF), que ningún competidor tiene.</div>
+    </div>
+
+    <div class="plan feat">
+      <div class="plan-tag">Más popular · destino del piloto</div>
+      <div class="plan-tier">Tier 2</div>
+      <div class="plan-name">Pro</div>
+      <div class="plan-who">Restaurante o bar con servicio en mesa, dos turnos, administrador y cajero separados. 300–1.500 ventas/mes.</div>
+      <div class="plan-price p26" data-m="$126.900" data-a="$1.294.000">$126.900</div>
+      <div class="plan-per per26">por mes</div>
+      <div class="plan-alt alt26">o $1.294.000/año con −15%</div>
+      <ul class="plan-limits">
+        <li><span class="k">Usuarios de gestión</span><span class="v">5</span></li>
+        <li><span class="k">Perfiles mesero (PIN)</span><span class="v">10</span></li>
+        <li><span class="k">Mesas y zonas</span><span class="v">Sin límite comercial</span></li>
+        <li><span class="k">Facturas electrónicas</span><span class="v">Ilimitadas</span></li>
+        <li><span class="k">Comprobantes / tiquetes</span><span class="v">Ilimitados</span></li>
+        <li><span class="k">Listas de precio</span><span class="v">2</span></li>
+        <li><span class="k">Sedes</span><span class="v">1 (+ add-on)</span></li>
+        <li><span class="k">Implementación</span><span class="v">Onboarding guiado</span></li>
+      </ul>
+      <div class="plan-anchor"><strong>Anclaje:</strong> queda a $7.000/año del plan piloto ($1.287.000) → los 70 comercios actuales renuevan <em>sin aumento</em>. Coincide con el precio de Bold POS Avanzado, lo que mantiene coherencia con retail en facturación y CRM.</div>
+    </div>
+
+    <div class="plan">
+      <div class="plan-tier">Tier 3</div>
+      <div class="plan-name">Plus</div>
+      <div class="plan-who">Alto volumen, varias cajas simultáneas, aspiración multi-sede y necesidad de control administrativo. Más de 1.500 ventas/mes.</div>
+      <div class="plan-price p26" data-m="$185.900" data-a="$1.896.000">$185.900</div>
+      <div class="plan-per per26">por mes</div>
+      <div class="plan-alt alt26">o $1.896.000/año con −15%</div>
+      <ul class="plan-limits">
+        <li><span class="k">Usuarios de gestión</span><span class="v">Ilimitados</span></li>
+        <li><span class="k">Perfiles mesero (PIN)</span><span class="v">Ilimitados</span></li>
+        <li><span class="k">Mesas y zonas</span><span class="v">Sin límite comercial</span></li>
+        <li><span class="k">Facturas electrónicas</span><span class="v">Ilimitadas</span></li>
+        <li><span class="k">Comprobantes / tiquetes</span><span class="v">Ilimitados</span></li>
+        <li><span class="k">Listas de precio</span><span class="v">Múltiples</span></li>
+        <li><span class="k">Sedes</span><span class="v">1 + add-on preferencial</span></li>
+        <li><span class="k">Implementación</span><span class="v">Personalizada con CS</span></li>
+      </ul>
+      <div class="plan-anchor"><strong>Anclaje:</strong> apenas por encima de Bold POS Ilimitado ($1.821M) y ~28% por debajo de la operación real de Fudo con módulos (~$2,95M/año). Las mesas no son barrera en ningún plan: solo aplica el tope antiabuso de 100, que hoy no alcanza ningún comercio (máx. 90).</div>
+    </div>
+  </div>
+
+  <div class="callout c-warn">
+    <span class="ct">Por qué bajé Pro y Plus respecto al draft</span>
+    <p>El draft propone Pro a $1.529.000 y Plus a $2.345.000. En 2026 el delta de Pro sobre Starter es <strong>solo capacidad</strong> —no hay una sola feature nueva que justifique $612.000/año más—, y Plus a $2.345.000 tendría que competir contra Fudo <em>sin</em> KDS, sin recetas, sin combos, sin modificadores, sin delivery y sin app dedicada de meseros. Es una conversación que perdemos. Con $126.900 / $185.900 el ARPU sigue subiendo sobre el promedio actual de $955k, y en 2027 subimos a los números del draft con el producto que los respalda.</p>
+  </div>
+
+  <h3>Qué incluye cada plan</h3>
+  <p style="font-size:var(--text-sm);color:var(--gray-500)"><span class="b b-ok">Listo</span> ya está en producción &nbsp;·&nbsp; <span class="b b-road">Roadmap</span> comprometido con fecha &nbsp;·&nbsp; <span class="b b-no">No</span> no está en el plan</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th style="width:34%">Funcionalidad</th><th style="width:80px">Estado</th><th>Starter</th><th>Pro</th><th>Plus</th></tr></thead>
+      <tbody>
+        <tr><td colspan="5" style="background:var(--gray-50);font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-500)">Operación en sala — todo en base, en los tres planes</td></tr>
+        <tr><td>Mapa visual de mesas y zonas</td><td><span class="b b-ok">Listo</span></td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Pedidos vivos (N adiciones a cuenta abierta)</td><td><span class="b b-ok">Listo</span></td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Comandas térmicas + reimpresión</td><td><span class="b b-ok">Listo</span></td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Precuenta</td><td><span class="b b-ok">Listo</span></td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Dividir cuenta (por ítem y equitativa)</td><td><span class="b b-ok">Listo</span></td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Propinas configurables 0/10/15/personalizada</td><td><span class="b b-ok">Listo</span></td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Carta / menú QR</td><td><span class="b b-ok">Listo</span></td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Toma de pedidos desde app móvil / Smart Pro</td><td><span class="b b-ok">Listo</span></td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Turnos y cierre de caja</td><td><span class="b b-ok">Listo</span></td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td colspan="5" style="background:var(--gray-50);font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-500)">Tributario, inventario y datos</td></tr>
+        <tr><td>FE DIAN con propina discriminada + INC 8% / IVA</td><td><span class="b b-ok">Listo</span></td><td>300/mes</td><td>Ilimitada</td><td>Ilimitada</td></tr>
+        <tr><td>Comprobante / tiquete POS electrónico</td><td><span class="b b-ok">Listo</span></td><td>Ilimitado</td><td>Ilimitado</td><td>Ilimitado</td></tr>
+        <tr><td>Inventario</td><td><span class="b b-ok">Listo</span></td><td>Ilimitado</td><td>Ilimitado</td><td>Ilimitado</td></tr>
+        <tr><td>Dashboard de ventas Bold <span class="b b-navy">ventaja</span></td><td><span class="b b-ok">Listo</span></td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Reportes de restaurante base (ventas, propinas, ocupación)</td><td><span class="b b-ok">Listo</span></td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Listas de precio</td><td><span class="b b-ok">Listo</span></td><td><span class="b b-no">No</span></td><td>2</td><td>Múltiples</td></tr>
+        <tr><td colspan="5" style="background:var(--gray-50);font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-500)">Ecosistema Bold — el diferenciador que nadie replica</td></tr>
+        <tr><td>Integración datáfono Bold</td><td><span class="b b-ok">Listo</span></td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Cuenta / billetera del negocio (Bold CF)</td><td><span class="b b-ok">Listo</span></td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td colspan="5" style="background:var(--gray-50);font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-500)">Bloqueadores de renovación — deben salir antes de masificar, en los tres planes</td></tr>
+        <tr><td>Venta mostrador / orden sin mesa</td><td><span class="b b-road">Q4 2026</span></td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Ventas a crédito y cuentas por cobrar</td><td><span class="b b-road">Q4 2026</span></td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Traslado de orden entre mesas y zonas</td><td><span class="b b-road">Q4 2026</span></td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td colspan="5" style="background:var(--gray-50);font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-500)">Roadmap 2027 — se comunica como «próximamente», NO se cobra en 2026</td></tr>
+        <tr><td>Combos de productos</td><td><span class="b b-road">Q1 2027</span></td><td>◎</td><td>◎</td><td>◎</td></tr>
+        <tr><td>Modificadores y adicionales</td><td><span class="b b-road">Q1 2027</span></td><td>◎</td><td>◎</td><td>◎</td></tr>
+        <tr><td>Rol Mesero dedicado (PIN, sin usuario completo)</td><td><span class="b b-road">Q1 2027</span></td><td>◎</td><td>◎</td><td>◎</td></tr>
+        <tr><td>Reportes avanzados de restaurante</td><td><span class="b b-road">Q1 2027</span></td><td><span class="b b-no">No</span></td><td>◎</td><td>◎</td></tr>
+        <tr><td>Recetas y control de costos</td><td><span class="b b-road">Q1 2027</span></td><td><span class="b b-no">No</span></td><td>◎ add-on</td><td>◎</td></tr>
+        <tr><td>KDS monitor de cocina</td><td><span class="b b-road">Q1 2027</span></td><td><span class="b b-no">No</span></td><td>◎ add-on</td><td>◎</td></tr>
+        <tr><td>Integración delivery (Rappi, iFood)</td><td><span class="b b-road">Q1 2027</span></td><td><span class="b b-no">No</span></td><td><span class="b b-no">No</span></td><td>◎</td></tr>
+        <tr><td>Estado de resultados básico</td><td><span class="b b-road">2027+</span></td><td><span class="b b-no">No</span></td><td><span class="b b-no">No</span></td><td>◎</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout c-rec">
+    <span class="ct">Cómo comunicar el roadmap sin prometer humo</span>
+    <p>El PDF de research lo recomienda y lo suscribo: mostrar las funcionalidades pendientes en la página de precios como <strong>«próximamente» con trimestre estimado</strong>, visualmente distintas de las incluidas. Genera expectativa, permite al vendedor hablar de futuro sin mentir, y evita la conversación incómoda de «pagué por recetas y no están». Lo que <strong>no</strong> se debe hacer es listarlas sin marca de estado, como hace el draft actual en Pro y Plus.</p>
+  </div>
+
+  <div class="callout c-risk">
+    <span class="ct">Guardarraíl comercial obligatorio</span>
+    <p>Starter a $917.000/año está <strong>por debajo del ticket promedio actual ($955k)</strong>. Con la distribución real del piloto, un ejecutivo que quiera cerrar rápido va a ofrecer Starter al 80% de los prospectos y el ticket promedio va a caer. Recomiendo: (a) Starter <strong>no aparece</strong> como opción por defecto en la propuesta comercial de un restaurante con servicio en mesa —solo para mostrador y cafeterías—, y (b) el CRM exige justificación para vender Starter a un negocio con dos turnos o más de un usuario.</p>
+  </div>
+
+  <div class="callout c-risk">
+    <span class="ct">El problema de fondo, ahora sin rodeos</span>
+    <p>Al caerse la barrera de mesas probé las alternativas contra la distribución real, y ninguna produce una mezcla de planes sana:</p>
+    <ul style="margin:10px 0 12px 20px">
+      <li>Por <strong>ventas/mes</strong>: el corte más apretado defendible (150 / 600) reparte <strong>67% / 25% / 8%</strong>. Un corte de 300 lo lleva a 83% / 13% / 4%.</li>
+      <li>Por <strong>usuarios</strong>: 1,3 por comercio. No separa a nadie.</li>
+      <li>Por <strong>FE</strong>: el 63% de los comercios no emite ninguna factura electrónica. No separa a nadie.</li>
+      <li>Por <strong>sedes</strong>: casi nadie tiene una segunda.</li>
+    </ul>
+    <p>La causa no es que elijamos mal la métrica: <strong>la base es genuinamente pequeña y homogénea</strong>. Dibujemos los cortes donde los dibujemos, entre el 67% y el 83% cae en el plan de entrada. Eso significa que <strong>el precio de Starter no es el precio del plan barato: es prácticamente el ARPU de la vertical</strong>.</p>
+    <p style="margin-bottom:0">Hay dos salidas y hay que elegir una conscientemente. <strong>(A) Subir Starter a $99.900/mes ($1.019.000/año)</strong>, por encima del ticket actual, asumiendo que ahí vive el grueso y renunciando a competir en precio de entrada contra Fudo. <strong>(B) Dejarlo en $89.900</strong> y aceptar que 2026 es un año de captura de logos con ARPU plano, apostando a que la expansión llegue en 2027 vía features y add-ons. Yo me inclino por (A) por el riesgo de dilución en la renovación de enero, pero es una decisión de estrategia comercial, no de datos.</p>
+  </div>
+</section>
+
+<!-- ══════════ 08 ══════════ -->
+<section id="s8">
+  <div class="sec-head"><span class="sec-num">08</span><h2>Esquema 2027 — producto completo</h2></div>
+  <p class="lede">Supuesto de esta sección: <strong>el 100% del roadmap está desarrollado</strong>. Aquí sí tiene sentido gatear por features, porque las features existen. Los precios convergen con el draft original.</p>
+
+  <div class="toggle" id="tg27">
+    <button class="on" onclick="setPer27('m')">Mensual</button>
+    <button onclick="setPer27('a')">Anual (−15%)</button>
+  </div>
+
+  <div class="plans">
+    <div class="plan">
+      <div class="plan-tier">Tier 1</div>
+      <div class="plan-name">Starter</div>
+      <div class="plan-who">Mostrador, cafeterías, panaderías, licoreras. Operación de un turno.</div>
+      <div class="plan-price p27" data-m="$99.900" data-a="$1.019.000">$99.900</div>
+      <div class="plan-per per27">por mes</div>
+      <div class="plan-alt alt27">o $1.019.000/año con −15%</div>
+      <ul class="plan-limits">
+        <li><span class="k">Usuarios de gestión</span><span class="v">3</span></li>
+        <li><span class="k">Perfiles mesero</span><span class="v">5</span></li>
+        <li><span class="k">Mesas</span><span class="v">Sin límite comercial</span></li>
+        <li><span class="k">Facturas electrónicas</span><span class="v">500 / mes</span></li>
+        <li><span class="k">Sedes</span><span class="v">1</span></li>
+      </ul>
+      <div class="plan-anchor">+11% sobre 2026. El alza se paga con combos, modificadores, venta mostrador y CxC ya entregados.</div>
+    </div>
+
+    <div class="plan feat">
+      <div class="plan-tag">Más popular</div>
+      <div class="plan-tier">Tier 2</div>
+      <div class="plan-name">Pro</div>
+      <div class="plan-who">Restaurante con servicio completo, cocina con pantalla, control de costos y equipo de meseros.</div>
+      <div class="plan-price p27" data-m="$149.900" data-a="$1.529.000">$149.900</div>
+      <div class="plan-per per27">por mes</div>
+      <div class="plan-alt alt27">o $1.529.000/año con −15%</div>
+      <ul class="plan-limits">
+        <li><span class="k">Usuarios de gestión</span><span class="v">8</span></li>
+        <li><span class="k">Perfiles mesero</span><span class="v">20</span></li>
+        <li><span class="k">Mesas</span><span class="v">Sin límite comercial</span></li>
+        <li><span class="k">Facturas electrónicas</span><span class="v">Ilimitadas</span></li>
+        <li><span class="k">Sedes</span><span class="v">1 (+ add-on)</span></li>
+      </ul>
+      <div class="plan-anchor">Exactamente el precio del draft original. Se ubica entre Fudo Avanzado ($118.900) y Loggro Estándar ($175.990), con recetas y KDS incluidos —que en Fudo son módulos pagos.</div>
+    </div>
+
+    <div class="plan">
+      <div class="plan-tier">Tier 3</div>
+      <div class="plan-name">Plus</div>
+      <div class="plan-who">Alto volumen, delivery integrado, control administrativo y hasta 3 sedes.</div>
+      <div class="plan-price p27" data-m="$229.900" data-a="$2.345.000">$229.900</div>
+      <div class="plan-per per27">por mes</div>
+      <div class="plan-alt alt27">o $2.345.000/año con −15%</div>
+      <ul class="plan-limits">
+        <li><span class="k">Usuarios de gestión</span><span class="v">Ilimitados</span></li>
+        <li><span class="k">Perfiles mesero</span><span class="v">Ilimitados</span></li>
+        <li><span class="k">Mesas</span><span class="v">Sin límite comercial</span></li>
+        <li><span class="k">Facturas electrónicas</span><span class="v">Ilimitadas</span></li>
+        <li><span class="k">Sedes</span><span class="v">3 incluidas</span></li>
+      </ul>
+      <div class="plan-anchor">Precio del draft original. 3% por debajo de Siigo Premium y ~20% por debajo de la operación real de Fudo con módulos.</div>
+    </div>
+  </div>
+
+  <div class="card" style="border-left:4px solid var(--bold-navy)">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap">
+      <div style="flex:1;min-width:240px">
+        <div class="plan-tier">Tier 4 · nuevo en 2027</div>
+        <div class="plan-name" style="margin-bottom:6px">Cadenas</div>
+        <p style="font-size:var(--text-sm);color:var(--gray-500);margin-bottom:0">Franquicias y cadenas con más de 3 sedes. Consolidación multi-sede, API, SSO, SLA de soporte, ejecutivo de cuenta real e implementación por sede. Precio cotizado, base sugerida <strong>$2.345.000 + $890.000 por sede adicional</strong>.</p>
+      </div>
+      <div style="max-width:330px">
+        <p style="font-size:var(--text-sm);margin-bottom:0"><strong>Por qué crear este tier:</strong> el PDF de research recomienda explícitamente <em>evitar competir por cadenas y franquicias</em> en 2026 porque las brechas de funcionalidad se vuelven visibles. En 2027, con el producto completo, ese segmento pasa de riesgo a oportunidad —y necesita un tier propio para no distorsionar Plus.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>Diferenciación por features en 2027</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th style="width:32%">Funcionalidad</th><th>Starter</th><th>Pro</th><th>Plus</th><th>Cadenas</th></tr></thead>
+      <tbody>
+        <tr><td>Todo el core de sala (mesas, comandas, split, propinas, QR)</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Combos y modificadores</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Venta mostrador y CxC / crédito</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>App dedicada de meseros + rol Mesero</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr class="row-hl"><td><strong>Recetas, ingredientes y control de costos</strong></td><td><span class="b b-new">Add-on</span></td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr class="row-hl"><td><strong>KDS monitor de cocina</strong></td><td><span class="b b-new">Add-on</span></td><td>1 pantalla</td><td>Multipantalla</td><td>Multipantalla</td></tr>
+        <tr><td>Control de mermas y desperdicios</td><td><span class="b b-no">No</span></td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Reportes avanzados de restaurante</td><td><span class="b b-no">No</span></td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Listas de precio múltiples</td><td><span class="b b-no">No</span></td><td>2</td><td>Múltiples</td><td>Múltiples</td></tr>
+        <tr class="row-hl"><td><strong>Integración delivery (Rappi, iFood)</strong></td><td><span class="b b-no">No</span></td><td><span class="b b-new">Add-on</span></td><td>✓</td><td>✓</td></tr>
+        <tr><td>Estado de resultados básico</td><td><span class="b b-no">No</span></td><td><span class="b b-no">No</span></td><td>✓</td><td>✓</td></tr>
+        <tr><td>Consolidado multi-sede</td><td><span class="b b-no">No</span></td><td><span class="b b-no">No</span></td><td>✓</td><td>✓</td></tr>
+        <tr><td>Integración contable nativa <span class="b b-navy">diferenciador</span></td><td><span class="b b-no">No</span></td><td><span class="b b-no">No</span></td><td>✓</td><td>✓</td></tr>
+        <tr><td>API pública / SSO / SLA de soporte</td><td><span class="b b-no">No</span></td><td><span class="b b-no">No</span></td><td><span class="b b-no">No</span></td><td>✓</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout c-rec">
+    <span class="ct">Recetas: la decisión que la reunión dejó a medias</span>
+    <p>En la llamada se movió recetas del Tier 3 al Tier 2, y Bryan planteó también cobrarlo como add-on. Jessica cerró el argumento perfecto: <em>la gente quiere escuchar que lo tenemos, pero no todos lo usan; que pague el que quiera usarlo</em>.</p>
+    <p style="margin-bottom:0"><strong>Recomiendo las dos cosas a la vez</strong>: recetas <em>incluido</em> desde Pro (para poder decir «lo tenemos» sin asterisco en la conversación de venta, que es donde se pierden los deals contra Fudo) y <em>add-on</em> para Starter (para monetizar al pequeño que sí lo quiere). Es el mismo patrón que la FE: el tope está en el plan de entrada, no en los planes que importan.</p>
+  </div>
+</section>
+
+<!-- ══════════ 09 ══════════ -->
+<section id="s9">
+  <div class="sec-head"><span class="sec-num">09</span><h2>Add-ons</h2></div>
+  <p class="lede">La reunión pidió explícitamente listar los add-ons posibles. Aquí están los 11 candidatos con precio sugerido, anclaje competitivo y nivel de convicción. Y una advertencia sobre cuántos mostrar.</p>
+
+  <div class="callout c-risk">
+    <span class="ct">Advertencia antes de la lista</span>
+    <p>El IPC de Bold POS Restaurantes dice, textualmente en su hallazgo de comportamiento de compra, que los restaurantes <strong>prefieren un precio claro y todo incluido frente a esquemas de cobro por módulos que generan desconfianza</strong>. Fudo es el caso de estudio: precio de lista atractivo, operación real de ~$245.600/mes con módulos. Nuestra ventaja de posicionamiento es exactamente la contraria.</p>
+    <p style="margin-bottom:0"><strong>Regla:</strong> máximo <strong>3 add-ons visibles</strong> en la página de precios (sucursal, bolsa de FE, y uno más). El resto vive en la conversación comercial y en el backoffice. Un catálogo de 11 add-ons en la web nos convierte en lo que estamos atacando.</p>
+  </div>
+
+  <h3>Add-ons de capacidad — disponibles en 2026</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Add-on</th><th class="num">Precio sugerido</th><th>Aplica a</th><th style="width:34%">Fundamento y anclaje</th><th style="width:100px">Convicción</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Sucursal adicional</strong></td>
+          <td class="num">Precio retail vigente</td><td>Pro, Plus</td>
+          <td>Ya se vende y es lo que explica el salto del ticket promedio de julio. Jessica pidió que la sucursal <em>cueste menos, no que tenga descuento</em>, y el grupo acordó esperar un mes más de data antes de oficializarlo. <strong>Mantener precio actual hasta cerrar el comparativo agosto vs. julio.</strong></td>
+          <td><span class="b b-ok">Alta</span></td>
+        </tr>
+        <tr>
+          <td><strong>Bolsa de FE +100 / +300</strong></td>
+          <td class="num">SKU existente</td><td>Starter</td>
+          <td>Los SKUs <code>DOCUMENTOS_ELECTRONICOS_100</code> y <code>_300</code> ya están en producción con transacciones. Jessica propuso reusar los rangos que ya vendemos; es lo correcto: cero desarrollo, cero capacitación comercial nueva.</td>
+          <td><span class="b b-ok">Alta</span></td>
+        </tr>
+        <tr>
+          <td><strong>Usuario de gestión extra</strong></td>
+          <td class="num">$14.900/mes</td><td>Starter, Pro</td>
+          <td>Jessica lo pidió como alternativa al upgrade forzado: <em>si no quiere pasar al siguiente plan, que un usuario cueste</em>. Anclaje: ~12% del precio de Starter por asiento, en línea con SaaS de gestión. <strong>Ojo:</strong> con 1,3 usuarios/comercio hoy, el ingreso esperado en 2026 es marginal.</td>
+          <td><span class="b b-road">Media</span></td>
+        </tr>
+        <tr style="opacity:.6">
+          <td><strong><s>Pack +10 mesas</s></strong></td>
+          <td class="num">—</td><td>—</td>
+          <td><strong>Cancelado con la data de mesas (§05).</strong> Con 12 mesas de default en el 57% de la base y correlación cero con el negocio, este add-on cobraría por abrir una pantalla de configuración. Se elimina del catálogo.</td>
+          <td><span class="b b-no">Descartado</span></td>
+        </tr>
+        <tr>
+          <td><strong>Pack 5 perfiles mesero</strong></td>
+          <td class="num">$19.900/mes</td><td>Starter, Pro</td>
+          <td>Nico señaló que la cantidad de meseros sí es indicio del tamaño del restaurante. Pero cobrar por mesero choca con la estrategia de un Smart Pro por mesero. <strong>Recomiendo no lanzarlo en 2026</strong> y mantener el cupo generoso; reevaluar en 2027 con data de uso.</td>
+          <td><span class="b b-no">Baja</span></td>
+        </tr>
+        <tr>
+          <td><strong>Soporte Turno Pico</strong></td>
+          <td class="num">$29.900/mes</td><td>Todos</td>
+          <td>Atención fines de semana y fuera de horario. Es el add-on con <strong>más convicción de toda la lista</strong>: Jessica dijo literalmente que ella lo pagaría —«si fuera un restaurante que estoy cerrando y hoy es sábado y pasa algo». Reemplaza al «soporte WhatsApp prioritario» que se descartó por inviable. Nico estimó viabilidad hacia Q3–Q4 2027 y está evaluando un bot como paso previo.</td>
+          <td><span class="b b-ok">Alta*</span></td>
+        </tr>
+        <tr>
+          <td><strong>Implementación personalizada</strong></td>
+          <td class="num">$290.000 único</td><td>Starter, Pro</td>
+          <td>Incluida en Plus. Convierte un costo de CS en ingreso y crea razón de compra para Plus. Anclaje: Loggro cobra horas de integración adicionales a $115.000.</td>
+          <td><span class="b b-road">Media</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:var(--text-sm);color:var(--gray-500)">*Convicción alta en <em>demanda</em>, baja en <em>viabilidad operativa 2026</em>. No se puede vender antes de que exista el modelo de soporte.</p>
+
+  <h3>Add-ons de funcionalidad — 2027</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Add-on</th><th class="num">Precio sugerido</th><th>Aplica a</th><th style="width:38%">Fundamento y anclaje</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Recetas y control de costos</strong></td><td class="num">$39.900/mes</td><td>Starter</td>
+          <td>Incluido en Pro y arriba. Anclaje: en Fudo las recetas están detrás del plan Avanzado ($118.900). Es la feature más solicitada en el piloto por leads que no cerraron (La Charcutería Gastro Market, Ibrahim Katime, Zoref al Barril, Miami Cocktails, Sebastian Lopez Cafetería).</td></tr>
+        <tr><td><strong>KDS monitor de cocina</strong></td><td class="num">$34.900/mes por pantalla</td><td>Starter, Pro (2ª+ pantalla)</td>
+          <td>Anclaje directo: el módulo KDS de Fudo cuesta $38.900/mes. Cobrar por pantalla es lo natural y escala con el tamaño de la cocina.</td></tr>
+        <tr><td><strong>Integración delivery</strong></td><td class="num">$39.900/mes</td><td>Pro</td>
+          <td>Incluida en Plus. Anclaje: Fudo $38.900/mes, Loggro $20.990/mes solo por Rappi. Nuestro precio se justifica si integramos más de una plataforma.</td></tr>
+        <tr><td><strong>Integración contable nativa</strong></td><td class="num">$29.900/mes</td><td>Pro</td>
+          <td>Incluida en Plus. El PDF de research la marca como <strong>diferenciador</strong>: Loggro regala su integración con Loggro Pymes y Siigo hace combo con Siigo Nube; Bold no tiene integración nativa hoy. Es una brecha con nombre propio.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Mecanismo de validación: lista de espera pagada</h3>
+  <div class="callout c-data">
+    <span class="ct">La idea de Bryan, aterrizada</span>
+    <p>En la reunión Bryan planteó cobrar por adelantado un desarrollo futuro —«pagarnos tanto y en tres meses está», una lista de espera pero pagada— para ver si realmente están dispuestos a pagar antes de meternos al desarrollo. Jessica reforzó la variante de lista de espera simple.</p>
+    <p style="margin-bottom:0"><strong>Cómo lo implementaría sin riesgo reputacional:</strong> <strong>$99.000 de reserva</strong> que (a) se abona 100% al primer año del add-on cuando salga, (b) se devuelve completo si no sale en el trimestre prometido, y (c) da el add-on con 30% de descuento permanente. La métrica de decisión no es la plata: es <strong>cuántos convierten sobre cuántos vieron la oferta</strong>. Con recetas es el candidato ideal para probarlo, y no requiere una línea de código de producto —basta un link de pago y una hoja.</p>
+  </div>
+</section>
+
+<!-- ══════════ 10 ══════════ -->
+<section id="s10">
+  <div class="sec-head"><span class="sec-num">10</span><h2>Periodicidad y descuentos</h2></div>
+  <p class="lede">La reunión no cerró esto y el draft lo tiene como pregunta abierta. Aquí está la recomendación y el riesgo de cada opción.</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Modalidad</th><th class="num">Descuento</th><th>Recomendación</th><th style="width:38%">Fundamento</th></tr></thead>
+      <tbody>
+        <tr class="row-hl"><td><strong>Anual</strong></td><td class="num">−15%</td><td><span class="b b-ok">Riel principal</span></td>
+          <td>Es como ya opera Bold POS, mejora LTV y reduce churn. Mantener coherencia con retail simplifica facturación y CRM. Loggro además ata su FE ilimitada a la compra a 12 meses: es un precedente de mercado para usar el compromiso anual como condición de un beneficio.</td></tr>
+        <tr><td><strong>Semestral</strong></td><td class="num">−8%</td><td><span class="b b-ok">Mantener</span></td>
+          <td><strong>Ya existe y ya se vende</strong> (<code>RESTAURANTE_BASIC_SEMESTRAL</code> con transacciones en Mixpanel). No hay que decidir si crearlo, hay que decidir si lo seguimos ofreciendo. Sí: útil para negocios estacionales y como escalón intermedio para quien no puede el anual. Fudo lo ofrece al 10%.</td></tr>
+        <tr><td><strong>Mensual</strong></td><td class="num">Sin descuento</td><td><span class="b b-road">Solo Starter, como prueba</span></td>
+          <td>El PDF de research lo recomienda con razón: el flujo de caja mensual del sector es ajustado y la mortalidad es alta, y hay solicitudes explícitas de leads que no cerraron por esto (Distribuidora Bonanza, WRG, Miami Cocktails). Pero abrirlo en Pro y Plus canibaliza el flujo de caja y el ticket promedio que apenas subió a $955k. <strong>Prueba controlada en Starter durante un trimestre, midiendo conversión y churn a 90 días.</strong></td></tr>
+        <tr><td><strong>Prueba gratis</strong></td><td class="num">14 días</td><td><span class="b b-ok">Lanzar con Pro</span></td>
+          <td>Fudo da 7 días y Loggro también; 14 días es ventaja percibida sin costo real. Debe ser sobre <strong>Pro</strong>, no Starter, para que el prospecto pruebe el flujo completo. Ya existe <code>FREE_TRIAL_RESTAURANTE</code> en producción, así que la mecánica está.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout c-warn">
+    <span class="ct">Un detalle que hay que decidir explícitamente</span>
+    <p>Si abrimos mensual sin descuento, el precio de lista mensual pasa a ser el número que el prospecto compara contra Fudo y Loggro, que publican precios mensuales. Con Starter a $89.900/mes competimos bien contra Loggro Básico ($120.990) pero quedamos 43% arriba de Fudo Inicial ($62.900). <strong>La página de precios debe mostrar el precio anual dividido en 12 como número principal</strong> ($76.400/mes equivalente) y el mensual puro como opción secundaria. Es lo que hace Alegra.</p>
+  </div>
+</section>
+
+<!-- ══════════ 11 ══════════ -->
+<section id="s11">
+  <div class="sec-head"><span class="sec-num">11</span><h2>Migración: dónde queda el piloto</h2></div>
+  <p class="lede">Esta es la pregunta 4 del draft y el punto que levantó Jessica en la reunión. Es también el mayor riesgo de ejecución del lanzamiento.</p>
+
+  <div class="card">
+    <div class="label">El plan que hay que reemplazar</div>
+    <div style="display:flex;gap:34px;flex-wrap:wrap">
+      <div><div class="metric-lbl">Plan</div><div style="font-weight:700;font-size:var(--text-md)">POS BASIC Restaurantes</div></div>
+      <div><div class="metric-lbl">Precio</div><div style="font-weight:700;font-size:var(--text-md)">$1.287.000/año</div></div>
+      <div><div class="metric-lbl">Facturación electrónica</div><div style="font-weight:700;font-size:var(--text-md)">Ilimitada</div></div>
+      <div><div class="metric-lbl">Usuarios</div><div style="font-weight:700;font-size:var(--text-md)">Ilimitados</div></div>
+      <div><div class="metric-lbl">Vigencia</div><div style="font-weight:700;font-size:var(--text-md)">15 jul – 30 ago 2026</div></div>
+    </div>
+  </div>
+
+  <div class="callout c-risk">
+    <span class="ct">El problema en una frase</span>
+    <p>El plan piloto tiene <strong>usuarios ilimitados y FE ilimitada</strong>. Cualquier plan nuevo con cupos es, para un cliente del piloto, un <strong>quitarle algo</strong>. No importa que hoy use 1,3 usuarios: la conversación de renovación no es sobre lo que usa, es sobre lo que pierde.</p>
+  </div>
+
+  <h3>Propuesta de migración por cohorte</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Cohorte</th><th class="num">Comercios</th><th>Destino</th><th>Precio de renovación</th><th style="width:30%">Argumento de venta</th></tr></thead>
+      <tbody>
+        <tr class="row-hl">
+          <td><strong>Cuerpo del piloto</strong><br><span style="font-size:var(--text-sm);color:var(--gray-500)">Actividad normal, ≤40 mesas, ≤5 usuarios</span></td>
+          <td class="num">~36</td><td><strong>Pro</strong></td>
+          <td><strong>$1.287.000/año</strong> como «precio protegido» (rack $1.294.000)</td>
+          <td>«Tu precio no sube y ganas soporte de onboarding, listas de precio y FE ilimitada garantizada por contrato.» Renovación sin fricción, sin negociación.</td>
+        </tr>
+        <tr>
+          <td><strong>Alto volumen</strong><br><span style="font-size:var(--text-sm);color:var(--gray-500)">Los que proyectan más de 1.000 ventas/mes: El Rincón de Andrés (~4.035), La Sopería del Norte (~2.872), La Sazón de Doña Julia (~1.458), NAN2 Licobar (~1.374), Achiotte 8a (~1.247), Cadillero Coffee (~1.188), Diego F. Ramírez (~1.077), Holy Coffee (~1.023)</span></td>
+          <td class="num">~8</td><td><strong>Plus</strong></td>
+          <td>$1.896.000/año, con 6 meses al precio de Pro</td>
+          <td>Abordarlos con <strong>valor</strong>, no con límite: usuarios ilimitados, implementación con CS, listas de precio múltiples y la conversación de segunda sede. Nunca «te pasaste del cupo».</td>
+        </tr>
+        <tr>
+          <td><strong>Mostrador puro</strong><br><span style="font-size:var(--text-sm);color:var(--gray-500)">Licoreras, panaderías, cafés sin mesas</span></td>
+          <td class="num">~8</td><td><strong>Starter</strong></td>
+          <td>$917.000/año</td>
+          <td>Es un downgrade de precio consciente. Se acepta la pérdida de ARPU para retener: son comercios que no consumen mesas y que en Pro se van a sentir estafados. Su upside está en las bolsas de FE.</td>
+        </tr>
+        <tr>
+          <td><strong>Sin activar</strong><br><span style="font-size:var(--text-sm);color:var(--gray-500)">Menos de 10 ventas/mes</span></td>
+          <td class="num">~18</td><td><span class="b b-road">Activación antes de renovación</span></td>
+          <td>—</td>
+          <td>Estos comercios <strong>no tienen un problema de precio, tienen un problema de adopción</strong>. Renovarlos sin activarlos es churn diferido. Necesitan intervención de CS antes de que se les hable de plan.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout c-rec">
+    <span class="ct">Cláusula de abuelo — recomendada</span>
+    <p><strong>Los comercios del piloto conservan usuarios ilimitados durante 12 meses</strong>, aunque su plan publique 5. Cuesta prácticamente nada (nadie pasa de 4 usuarios hoy) y elimina por completo la conversación de «me están quitando algo». Al vencimiento se les ofrece el add-on de usuario extra o el upgrade a Plus, ya con data de uso real de un año para sustentar la conversación.</p>
+    <p style="margin-bottom:0">La FE no necesita cláusula: en el modelo recomendado Pro ya tiene FE ilimitada, así que nadie del piloto pierde nada por ese lado.</p>
+  </div>
+</section>
+
+<!-- ══════════ 12 ══════════ -->
+<section id="s12">
+  <div class="sec-head"><span class="sec-num">12</span><h2>Lo que faltó en la reunión</h2></div>
+  <p class="lede">Me pediste revisar la transcripción completa para ver si te falta algo. Dos listas: los acuerdos que el draft todavía no refleja, y los temas que nadie levantó.</p>
+
+  <h3>Acuerdos de la reunión vs. estado del draft</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th style="width:36%">Acuerdo del 14-ago</th><th style="width:120px">¿En el draft?</th><th>Qué falta hacer</th></tr></thead>
+      <tbody>
+        <tr><td>Tres tiers</td><td><span class="b b-ok">Sí</span></td><td>Solo faltan los nombres definitivos. Starter/Pro/Plus funciona y es consistente con la nomenclatura de la industria.</td></tr>
+        <tr class="row-hl"><td><strong>Eliminar «cajas / turnos» como diferenciador</strong></td><td><span class="b b-no">No</span></td><td>El draft sigue describiendo Pro como «hasta 2 cajas» y lista «múltiples turnos de caja» como beneficio del Tier 2. <strong>Hay que borrar ambas menciones</strong> y dejar turnos ilimitados en los tres planes.</td></tr>
+        <tr><td>Propinas por default en todos los planes</td><td><span class="b b-ok">Sí</span></td><td>Ya movido a Starter. ✓</td></tr>
+        <tr><td>Combos por default en todos</td><td><span class="b b-ok">Sí</span></td><td>Está en Starter como roadmap Q1-27. ✓</td></tr>
+        <tr class="row-hl"><td><strong>Mapa de mesas en todos los planes</strong></td><td><span class="b b-road">Ambiguo</span></td><td>El draft tiene «Gestión de mesas» en Starter <em>y</em> «Gestión de mesas (mapa visual)» en Pro con la pregunta «¿solo estará para este plan?». Bryan mismo dijo en la llamada que a nivel de sistema no se puede quitar. <strong>Resolver: mapa de mesas es base en los tres.</strong></td></tr>
+        <tr class="row-hl"><td><strong>Modificadores: ¿abiertos o restringidos?</strong></td><td><span class="b b-road">Sin decidir</span></td><td>Quedó con asterisco. Mi recomendación en §04: abiertos a todos.</td></tr>
+        <tr><td>Recetas movido de Tier 3 a Tier 2</td><td><span class="b b-ok">Sí</span></td><td>✓ Y además vale como add-on para Starter (§09).</td></tr>
+        <tr class="row-hl"><td><strong>Quitar «soporte WhatsApp prioritario»</strong></td><td><span class="b b-no">No</span></td><td>Se descartó explícitamente por inviable —no hay forma de diferenciar niveles de soporte hoy— pero el draft no lo eliminó de la lista de Pro. <strong>Borrarlo y reemplazarlo por el add-on Soporte Turno Pico.</strong></td></tr>
+        <tr><td>Ejecutivo de cuenta / CAM</td><td><span class="b b-road">Con asterisco</span></td><td>Nico cuestionó que sea sostenible y Jessica propuso cambiarlo por soporte de urgencia en fin de semana. <strong>Recomiendo sacarlo de Plus en 2026</strong> y reservarlo para el tier Cadenas de 2027.</td></tr>
+        <tr class="row-hl"><td><strong>Bot / agente de soporte gratis para todos</strong></td><td><span class="b b-no">No</span></td><td>Juan fue claro: debería ser gratis para todos porque entre más lo usen, más bajan los costos. No está en el draft. <strong>Agregarlo como beneficio base en los tres planes</strong>, es un argumento de venta a costo cero.</td></tr>
+        <tr class="row-hl"><td><strong>App de meseros: ¿existe o no?</strong></td><td><span class="b b-no">Contradicción</span></td><td>El draft dice «✅ App meseros — el app actual funciona para meseros». El PDF de research dice «App para meseros: <strong>Roadmap</strong>». Son afirmaciones incompatibles y el equipo comercial va a usar la que le convenga. <strong>Definir el mensaje único antes de capacitar ventas.</strong></td></tr>
+        <tr><td>Dos esquemas: 2026 y 2027</td><td><span class="b b-ok">Sí</span></td><td>Este documento. ✓</td></tr>
+        <tr><td>Definir add-ons (mesas, usuarios, sucursales)</td><td><span class="b b-road">Solo lista</span></td><td>El draft los lista sin precio ni fundamento. Desarrollados en §09.</td></tr>
+        <tr><td>Lista de espera pagada</td><td><span class="b b-road">Mencionado</span></td><td>Mecánica concreta en §09.</td></tr>
+        <tr><td>Acotar FE + investigar rangos de la competencia</td><td><span class="b b-no">Pendiente</span></td><td>§03 y §06. <strong>Con una corrección: sí existe cobro por ingresos</strong>, y es el modelo dominante en Colombia.</td></tr>
+        <tr><td>Renovación de clientes actuales</td><td><span class="b b-road">Pregunta abierta</span></td><td>§11.</td></tr>
+        <tr><td>Soporte fin de semana / fuera de horario</td><td><span class="b b-no">No</span></td><td>§09. Nico se lo llevó para evaluar; viabilidad estimada Q3–Q4 2027.</td></tr>
+        <tr><td>Revisar registros de julio bajo $700.000</td><td><span class="b b-no">No</span></td><td>Es una <strong>dependencia del pricing</strong>, no un tema aparte: contamina el ticket promedio sobre el que estamos anclando precios. Ver §13.</td></tr>
+        <tr><td>Comparar agosto vs. julio para sucursales</td><td><span class="b b-no">No</span></td><td>Es el gate para decidir el precio de la sucursal adicional. Sin ese dato, el add-on de sucursal se mantiene al precio actual.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Temas que nadie levantó y que deberían estar</h3>
+  <div class="grid2">
+    <div class="card">
+      <ol style="margin-bottom:0">
+        <li><strong>No hay telemetría de mesas, zonas ni usuarios creados.</strong> Cero eventos en Mixpanel. Bloquea tres de las cuatro barreras propuestas. Es la historia técnica más urgente.</li>
+        <li><strong>¿El tiquete POS electrónico tiene costo marginal?</strong> Nico se acercó al tema pero no se resolvió. Si lo tiene, el driver de costo es 6× lo que estamos asumiendo y los cupos cambian (§06).</li>
+        <li><strong>Política de enforcement.</strong> Nadie preguntó qué pasa cuando un comercio se pasa del cupo. Es la diferencia entre un upsell y una cancelación (§06).</li>
+        <li><strong>Cláusula de abuelo para el piloto.</strong> Nadie mencionó que el plan piloto tiene usuarios ilimitados y que el nuevo esquema es un takeaway (§11).</li>
+        <li><strong>El piloto no es solo restaurantes.</strong> Licoreras, panaderías y cafés de mostrador son una porción relevante. Un pricing por mesas los misprice (§02, §05).</li>
+        <li><strong>El techo técnico de mesas del PRD (400–500).</strong> No apareció en la conversación. Hay que confirmarlo antes de publicar «mesas ilimitadas».</li>
+      </ol>
+    </div>
+    <div class="card">
+      <ol start="7" style="margin-bottom:0">
+        <li><strong>CxC / crédito no es un add-on, es un bloqueador de renovación.</strong> Dolces Antojos dijo textualmente que su suscripción dependía de eso; Bar Alkaeda maneja créditos de $5M a clientes VIP; Leal Mercado no compra hasta tenerlo. Va en base.</li>
+        <li><strong>Venta mostrador y traslado de orden entre mesas</strong> son las otras dos solicitudes que aparecen repetidamente en el piloto y bloquean cierres. Deben salir antes de masificar.</li>
+        <li><strong>Guardarraíl contra el downsell a Starter.</strong> Starter cuesta menos que el ticket promedio actual. Sin regla comercial, el lanzamiento baja el ARPU (§07).</li>
+        <li><strong>Precio de la sucursal en restó.</strong> Jessica quería que cueste menos, no que se descuente. Es una decisión de estructura, no de descuento, y quedó pendiente del comparativo de agosto.</li>
+        <li><strong>Prueba gratis de 14 días.</strong> El PDF la propone, la reunión no la tocó, y ya existe la mecánica en producción (<code>FREE_TRIAL_RESTAURANTE</code>).</li>
+        <li><strong>Los 18 comercios del piloto casi inactivos.</strong> Nadie preguntó qué hacer con ellos. Son un problema de activación disfrazado de problema de renovación (§11).</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 13 ══════════ -->
+<section id="s13">
+  <div class="sec-head"><span class="sec-num">13</span><h2>Riesgos y supuestos</h2></div>
+  <p class="lede">Todo lo anterior descansa sobre estos supuestos. Si alguno se cae, la propuesta cambia.</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th style="width:30%">Supuesto o riesgo</th><th style="width:90px">Impacto</th><th>Qué pasa si falla y cómo mitigarlo</th></tr></thead>
+      <tbody>
+        <tr><td><strong>El ticket promedio de $955k es real</strong></td><td><span class="b b-new">Alto</span></td>
+          <td>En la misma reunión aparecieron comercios facturando el año y cobrando la mitad, y registros en cero sin ejecutivo asignado. Si el promedio limpio es materialmente menor, los precios de 2026 quedan agresivos. <strong>Mitigación:</strong> no publicar precios hasta que cierre la revisión de NITs de Nico.</td></tr>
+        <tr><td><strong>El rol Mesero sale en Q1 2027</strong></td><td><span class="b b-new">Alto</span></td>
+          <td>Sin él, el cupo de 2 usuarios en Starter es una limitación dura (cada mesero consume un asiento) y el argumento de «meseros ilimitados» no existe. <strong>Mitigación:</strong> si se retrasa, Starter sale con 3 usuarios de gestión.</td></tr>
+        <tr><td><strong>El tiquete POS electrónico no tiene costo marginal</strong></td><td><span class="b b-new">Alto</span></td>
+          <td>Si lo tiene, el cupo de FE de Starter debe redefinirse sobre documentos totales (~500/mes) y hay que revisar el margen de todos los planes. <strong>Mitigación:</strong> confirmarlo con el proveedor esta semana; es una pregunta de una sola respuesta.</td></tr>
+        <tr><td><strong>El mapa de mesas tiene 12,4% de adopción</strong></td><td><span class="b b-new">Alto</span></td>
+          <td>Es nuestro titular de venta y lo usa uno de cada ocho comercios (344 mesas dibujadas de 4.359). Si la causa es falta de descubrimiento, se arregla con producto; si es falta de necesidad, todo el posicionamiento de la vertical hay que replantearlo. <strong>Mitigación:</strong> investigar la causa antes de construir la campaña de Q4 sobre esa feature.</td></tr>
+        <tr><td><strong>Sin barrera de mesas, ¿qué separa Starter de Pro?</strong></td><td><span class="b b-new">Alto</span></td>
+          <td>Quedan FE, usuarios, sedes y servicio. Ninguna es fuerte en 2026: 1,3 usuarios por comercio, 63% no emite FE, casi nadie tiene segunda sede. <strong>El riesgo real es que el 70–80% de la base caiga en Starter sin importar cómo dibujemos los cortes.</strong> Mitigación en el recuadro siguiente.</td></tr>
+        <tr><td><strong>La base sigue duplicando volumen mes a mes</strong></td><td><span class="b b-road">Medio</span></td>
+          <td>Julio 11.886 → agosto ~24.240 ventas proyectadas. Si el crecimiento se sostiene, los cortes de FE calibrados hoy quedan cortos en un trimestre. <strong>Mitigación:</strong> revisión trimestral obligatoria de los cupos, escrita en el documento comercial.</td></tr>
+        <tr><td><strong>CxC, venta mostrador y traslado de mesas salen en Q4</strong></td><td><span class="b b-new">Alto</span></td>
+          <td>Son bloqueadores de renovación con nombre y apellido en el piloto. Si no salen, el churn de la renovación de enero va a dominar cualquier ganancia de pricing. <strong>Mitigación:</strong> tratarlos como requisito de lanzamiento comercial, no como roadmap.</td></tr>
+        <tr><td><strong>El límite de mesas no ahuyenta al segmento de mostrador</strong></td><td><span class="b b-road">Medio</span></td>
+          <td>Una porción relevante del piloto son licoreras y panaderías. <strong>Mitigación:</strong> la venta mostrador no consume cupo de mesa, y el mensaje comercial para ese segmento no menciona mesas.</td></tr>
+        <tr><td><strong>Mensual no canibaliza el anual</strong></td><td><span class="b b-road">Medio</span></td>
+          <td>Si se abre en Pro y Plus, el flujo de caja y el LTV se deterioran. <strong>Mitigación:</strong> prueba limitada a Starter, un trimestre, con métricas de conversión y churn a 90 días definidas antes de empezar.</td></tr>
+        <tr><td><strong>Los add-ons no rompen el mensaje de «todo incluido»</strong></td><td><span class="b b-road">Medio</span></td>
+          <td>El IPC advierte que el cobro por módulos genera desconfianza. <strong>Mitigación:</strong> máximo 3 add-ons visibles en la web.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════ 14 ══════════ -->
+<section id="s14">
+  <div class="sec-head"><span class="sec-num">14</span><h2>Decisiones que necesito de ti</h2></div>
+  <p class="lede">Primero, las cuatro preguntas del draft respondidas. Después, seis decisiones nuevas que este análisis destapó.</p>
+
+  <h3>Las cuatro preguntas del draft</h3>
+  <div class="q">
+    <div class="q-t">1. ¿Qué precio costará la sucursal extra? ¿Será un pricing diferente por plan?</div>
+    <div class="q-a"><strong>Mantener el precio de retail vigente y no diferenciarlo por plan en 2026.</strong> El grupo acordó esperar un mes más de data para confirmar si la sucursal está realmente impulsando el ticket promedio; hasta que ese comparativo agosto vs. julio esté listo, cambiar el precio es adivinar. Sí recomiendo que Plus tenga acceso a un <strong>precio preferencial de sucursal</strong>, porque es la única forma de hacer que Plus tenga sentido económico para un comercio que aspira a segunda sede.</div>
+  </div>
+  <div class="q">
+    <div class="q-t">2. ¿Qué precio costará un usuario extra? ¿Existirá esa posibilidad?</div>
+    <div class="q-a"><strong>Sí debe existir</strong> —fue el pedido de Jessica y es la salida para quien no quiere hacer upgrade— a <strong>$14.900/mes por usuario de gestión</strong>. Pero con 1,3 usuarios por comercio, el ingreso esperado en 2026 es marginal: es una herramienta de retención, no una línea de ingreso. Y los <strong>perfiles mesero no se cobran por unidad</strong>, se venden en packs de 5 y solo cuando el rol exista.</div>
+  </div>
+  <div class="q">
+    <div class="q-t">3. ¿Todas las suscripciones serán anuales o tendremos semestrales?</div>
+    <div class="q-a"><strong>Ambas, y ya es así.</strong> <code>RESTAURANTE_BASIC_SEMESTRAL</code> ya tiene transacciones en producción. Recomiendo formalizarlo a <strong>−8%</strong> (Fudo da 10%), mantener anual a −15% como riel principal, y probar mensual solo en Starter.</div>
+  </div>
+  <div class="q">
+    <div class="q-t">4. ¿En qué plan van a quedar los restaurantes actuales?</div>
+    <div class="q-a"><strong>En Pro, a precio protegido de $1.287.000/año</strong> —el mismo del plan piloto— con cláusula de abuelo de usuarios ilimitados por 12 meses. Los ~7 comercios de alto volumen se abordan para Plus con propuesta de valor, los ~8 de mostrador puro bajan a Starter, y los ~18 casi inactivos necesitan activación antes de que se les hable de plan. Detalle completo en §11.</div>
+  </div>
+
+  <h3>Seis decisiones nuevas</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th style="width:36%">Decisión</th><th>Mi recomendación</th><th style="width:90px">Urgencia</th></tr></thead>
+      <tbody>
+        <tr><td><strong>¿Bajamos Pro y Plus respecto al draft?</strong> ($126.900/$185.900 en vez de $149.900/$229.900)</td><td>Sí para 2026, y subir a los números del draft en 2027 cuando el producto los respalde. El argumento de venta de «tu precio no sube» para el piloto vale más que $23.000/mes de ARPU incremental en 45 comercios.</td><td><span class="b b-new">Esta semana</span></td></tr>
+        <tr><td><strong>¿FE ilimitada en Pro y Plus, o cupo en los tres?</strong></td><td>Ilimitada en Pro y Plus. Preserva el diferenciador que el research marca como ventaja, respeta el «todo incluido» del IPC y crea un gatillo de upgrade automático desde Starter.</td><td><span class="b b-new">Esta semana</span></td></tr>
+        <tr class="row-hl"><td><strong>¿Confirmas que mesas sale del pricing?</strong></td><td>Sí. La data lo cierra: default de 12 en el 57% de la base, correlación 0,03 con ventas, 12,4% de adopción del mapa. Queda solo un tope antiabuso de 100 mesas fuera de la página de precios. Esto deja a la reunión del 14-ago sin su barrera principal, así que hay que comunicarlo explícitamente al equipo.</td><td><span class="b b-new">Esta semana</span></td></tr>
+        <tr class="row-hl"><td><strong>¿Starter a $89.900 o a $99.900?</strong></td><td>Es la decisión con más impacto en ARPU de todo el documento. Entre el 67% y el 83% de la base cae en Starter con cualquier corte, así que su precio es el ARPU. Me inclino por $99.900, pero es tu llamada.</td><td><span class="b b-new">Esta semana</span></td></tr>
+        <tr><td><strong>¿Por qué solo el 12,4% usa el mapa de mesas?</strong></td><td>Pregunta para producto, no para pricing. Pero condiciona qué tan fuerte podemos posicionar la feature en la campaña de Q4. Vale una sesión de research corta con 5 comercios.</td><td><span class="b b-new">Antes de Q4</span></td></tr>
+        <tr><td><strong>¿Abrimos mensual?</strong></td><td>Solo Starter, un trimestre, con métricas definidas antes de empezar.</td><td><span class="b b-road">Antes de Q4</span></td></tr>
+        <tr><td><strong>¿Cuál es el mensaje único sobre la app de meseros?</strong></td><td>Hay que zanjar la contradicción entre el draft y el PDF antes de capacitar ventas. Si la app actual sirve para meseros, es un diferenciador que debemos gritar; si no, no puede aparecer con check verde.</td><td><span class="b b-new">Esta semana</span></td></tr>
+        <tr><td><strong>¿Probamos la lista de espera pagada con recetas?</strong></td><td>Sí. Costo cero de producto (link de pago + hoja), y responde la pregunta que Bryan quería responder antes de invertir en el desarrollo.</td><td><span class="b b-road">Q4</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout c-rec">
+    <span class="ct">Lo que yo haría primero, si tuviera que elegir una sola cosa</span>
+    <p>Crear la historia técnica de <strong>instrumentación de mesas, zonas y usuarios</strong>. Sin ella, tres de las cuatro barreras de este documento son promesas que no podemos medir, monitorear ni defender en una renovación. Todo lo demás se puede ajustar en una hoja; esto no.</p>
+  </div>
+</section>
+
+<!-- ══════════ 15 ══════════ -->
+<section id="s15">
+  <div class="sec-head"><span class="sec-num">15</span><h2>Fuentes</h2></div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="label">Internas</div>
+      <p class="src">
+        Transcripción y notas «Hablemos de Pricing/Planes POS Restaurantes», 14 ago 2026.<br>
+        Draft «Pricing Bold POS Restaurantes» (Bryan Nazar).<br>
+        «Bold POS Restaurantes — Estrategia de Pricing», research competitivo (Juan S. Pasquale), datos a jun 2026.<br>
+        PRD POS Restaurantes Fase 1, últ. act. 16 feb 2026.<br>
+        IPC Bold POS Restaurantes — comportamiento de compra y selección de planes.<br>
+        Canal #pos-solicitudes — solicitudes de comercios, nov 2025 – ago 2026.<br>
+        Export <code>companies_restaurant.xlsx</code> — 266 comercios de la vertical restaurante con total_tables, active_tables, tables_with_layout y tables_with_non_square_shape.<br>
+        Mixpanel proyecto 2986365, tablero «POS Restaurantes» (id 11272639). Queries sobre <code>Create Income (Sale + Invoice)</code>, <code>Create Invoice</code> y <code>Create Order</code> filtradas por <code>Plan Type</code> que contiene «RESTAURANTE», períodos 1–31 jul y 1–17 ago 2026.
+      </p>
+    </div>
+    <div class="card">
+      <div class="label">Externas — consultadas 18 ago 2026</div>
+      <p class="src">
+        Fudo — planes por mesas (Básico ≤20, Estándar ≤60, Full >60, con auto-ajuste mensual): <a href="https://ayuda.fu.do/es/1.-cu%C3%A1les-son-los-planes-disponibles">ayuda.fu.do</a> · precios y módulos: <a href="https://fu.do/es/precios/">fu.do/es/precios</a><br>
+        Loggro Restobar — FE ilimitada por banda de ingresos ($10M / $50M / sin tope) y solo en compras a 12 meses; caja adicional $43.990/mes: <a href="https://loggro.com/restobar/planes/">loggro.com/restobar/planes</a><br>
+        Alegra — planes por rango de ingresos mensuales con facturas ilimitadas: <a href="https://www.alegra.com/colombia/pos/precios/">alegra.com/colombia/pos/precios</a><br>
+        Paxioli — plan por documentos DIAN al año: <a href="https://www.paxioli.com/comparar/paxioli-vs-alegra">paxioli.com</a><br>
+        Comparativa de precios de software contable Colombia 2026: <a href="https://programascontabilidad.com/comparativas-de-software/precios-de-software-contable-colombia-2026/">programascontabilidad.com</a><br>
+        Análisis de costo real de Fudo en Colombia con módulos (~$245.600/mes): <a href="https://warocol.com/blog/fudo-software-para-restaurantes">warocol.com</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="callout c-neutral">
+    <span class="ct">Nota sobre las cifras</span>
+    <p>Todos los precios en COP con IVA 0% donde aplica. Las cifras del piloto son <strong>eventos de producto</strong>, no facturación: cuentan documentos y ventas creadas en el POS, no ingresos de Bold. Agosto cubre solo del 1 al 17; donde se proyecta a mes completo se indica y el factor es ×1,82. Los percentiles se calculan sobre comercios con actividad en el período, no sobre la base contratada.</p>
+  </div>
+</section>
+
+</main>
+</div>
+<script>
+function setPer(p){
+  document.querySelectorAll('#tg26 button').forEach((b,i)=>b.classList.toggle('on',(p==='m')===(i===0)));
+  document.querySelectorAll('.p26').forEach(e=>e.textContent=e.dataset[p]);
+  document.querySelectorAll('.per26').forEach(e=>e.textContent=(p==='m'?'por mes':'por año'));
+  document.querySelectorAll('.alt26').forEach((e,i)=>{
+    const c=document.querySelectorAll('.p26')[i];
+    e.textContent=(p==='m'?'o '+c.dataset.a+'/año con −15%':'equivale a '+c.dataset.m+'/mes de lista');});
+}
+function setPer27(p){
+  document.querySelectorAll('#tg27 button').forEach((b,i)=>b.classList.toggle('on',(p==='m')===(i===0)));
+  document.querySelectorAll('.p27').forEach(e=>e.textContent=e.dataset[p]);
+  document.querySelectorAll('.per27').forEach(e=>e.textContent=(p==='m'?'por mes':'por año'));
+  document.querySelectorAll('.alt27').forEach((e,i)=>{
+    const c=document.querySelectorAll('.p27')[i];
+    e.textContent=(p==='m'?'o '+c.dataset.a+'/año con −15%':'equivale a '+c.dataset.m+'/mes de lista');});
+}
+</script>
+<script>
+/* ── datos: comercios del piloto (Mixpanel, jul y ago 1-17 2026) ── */
+const M=[
+["MARMELEÉ",850,0,427,0],["VERDELATTE",354,0,203,0],["Casa Adrian",231,87,253,101],
+["LICORERA ELITE",1,0,13,0],["TREN DE LA SIERRA CAFE ROCK",324,0,145,0],["Rest. Nacional TEST",222,0,189,0],
+["ANGELA FLOREZ (MANGU)",57,30,55,55],["RESTAURANTE CASA TLAXCALA SAS",183,183,0,0],
+["SALSA CAMARA RESTAURANTE BAR SAS",275,275,139,139],["BAR ALKAEDA",276,0,125,0],
+["NAN2 LICOBAR",1246,0,755,0],["LA FLORERIA - FLORES & CAFÉ",180,42,0,0],
+["HOLY COFFEE",781,53,562,4],["MI PITE SAS",113,113,25,25],["INDIGO RESTO BAR",404,8,156,18],
+["AL BANUN Herencia Siria",94,2,0,0],["SUSHI ART SICOMORO",153,153,0,0],["CLUB MONTERREY",44,14,7,1],
+["CALMA COFFEE DRINKS",3,3,0,0],["LA VESPA",11,11,0,0],["CASA PRIVATA",52,52,0,0],
+["LOS JUEGOS DE DEMETRIA",131,0,112,0],["EL RINCÓN DE ANDRÉS",4171,647,2217,343],
+["EL PANTEÓN DE LA SALSA",426,0,223,0],["SINDAMANOY",97,0,65,0],["FRANCO FAST FOOD",43,40,51,51],
+["VLACEM GOURMET",338,0,310,0],["AMOR Y CAFE GOURMET",1,0,24,1],["Parrillita Campestre",165,0,124,0],
+["BERLIN BAR",97,0,111,0],["El Sarao Pub",123,120,107,107],["JUVENTUS BURGUER",15,0,1,0],
+["DELFOS VIDEO BAR",94,0,219,0],["VERBENA LICOEXPRESS",28,0,0,0],
+["VIDAL CAMILO CARDENAS GALLEGO",100,28,150,32],["E&DCOFFE",54,0,146,0],
+["Restaurante - Bar Achiotte 8a",120,0,685,0],["Carbones Bike Burger 96",1,0,396,8],
+["MARIA CECILIA ALVAREZ JAIMES",1,1,1,1],["LA SAZON DE DOÑA JULIA",0,0,801,0],
+["LA SOPERIA DEL NORTE",0,0,1578,0],["CADILLERO COFFE SHOP",0,0,653,0],
+["AMOR Y CAFE TOGO",0,0,280,22],["ARTE Y CAFE PARA MADRES",0,0,159,0],
+["SOÑADORES DEL FOGÓN S.A.S.",0,0,88,86],["SANDRA MILENA ORTIZ PAEZ",0,0,57,0],
+["Licoexpress San Antonio",0,0,447,0],["MANTRA CLUB SAS",0,0,343,0],
+["AY OMBE BE LICOEXPRESS",0,0,122,0],["MI LECHONCITO",0,0,449,0],
+["DIEGO FERNANDO RAMIREZ PARRAGA",0,0,592,592],["BAHIA 1525 S.A.S",0,0,59,0],
+["ISABELLA SALAZAR LOZANO",0,0,45,45],["WINDSOR CAFÉ BAR",0,0,28,0],
+["LA FORMULA VIP",0,0,22,0],["ICONIC COCKTAILS S.A.S",0,0,2,2],["Lapeelakm1",0,0,3,0],
+["PANADERIA VERONA",0,0,1,0],["Dulces ROCAKES",0,0,1,0],["Johanna Villamizar Sanchez",0,0,1,0],
+["HB IMMERSION SPACE",0,0,1,0],["ENRIQUEZ ORDOÑEZ SAS",0,0,1,0],["BroBueguer",0,0,1,0],
+["CHOCOFRUTIKIDS SAS",3,0,0,0],["Hotel rest. la herencia de elvira",2,0,0,0],
+["FERPLAY",2,0,0,0],["Garden coffee",1,0,0,0],["Vamos a Sprinfield",1,0,0,0],
+["Estudio local",1,0,0,0],["Restaurante - Bar Achiote",2,0,0,0],
+["Restaurante Achiote",4,0,0,0],["La caseta Bar",2,0,0,0],
+["LA SAZON DE PACHO",3,0,0,0],["ELIANA FERNANDA GRANADA GARCÍA",4,0,0,0],
+["Maria Bonita",1,0,0,0],["CiroDev Bistro TEST",1,0,0,0]
+];
+function planFor(feProj,ventasMax){
+  if(feProj>300||ventasMax>1500) return ventasMax>2500?'<span class="b b-navy">Plus</span>':'<span class="b b-blue">Pro</span>';
+  if(ventasMax>300) return '<span class="b b-blue">Pro</span>';
+  return '<span class="b b-no">Starter</span>';
+}
+function renderMerch(rows){
+  document.getElementById('tbMerch').innerHTML=rows.map(r=>{
+    const proj=Math.round(r[4]*1.82);
+    const vmax=Math.max(r[1],Math.round(r[3]*1.82));
+    return `<tr><td>${r[0]}</td><td class="num">${r[1]||'—'}</td><td class="num">${r[2]||'—'}</td>
+    <td class="num">${r[3]||'—'}</td><td class="num">${r[4]||'—'}</td>
+    <td class="num">${proj||'—'}</td><td>${planFor(proj,vmax)}</td></tr>`;}).join('');
+}
+let mSort=-1,mAsc=false,mRows=M.slice();
+function sortMerch(i){
+  if(mSort===i)mAsc=!mAsc;else{mSort=i;mAsc=(i===0);}
+  mRows.sort((a,b)=>{
+    let x,y;
+    if(i===5){x=a[4]*1.82;y=b[4]*1.82;} else {x=a[i];y=b[i];}
+    if(typeof x==='string')return mAsc?x.localeCompare(y):y.localeCompare(x);
+    return mAsc?x-y:y-x;});
+  filterMerch();
+}
+function filterMerch(){
+  const q=(document.getElementById('fMerch').value||'').toLowerCase();
+  renderMerch(mRows.filter(r=>r[0].toLowerCase().includes(q)));
+}
+sortMerch(1);
+
+/* ── simulador ── */
+const P26={Starter:{m:89900,a:917000,u:2,mesas:15,fe:300,sedes:1},
+           Pro:{m:126900,a:1294000,u:5,mesas:40,fe:'Ilimitadas',sedes:1},
+           Plus:{m:185900,a:1896000,u:'∞',mesas:'∞',fe:'Ilimitadas',sedes:'1 + add-on'}};
+function fmt(n){return '$'+n.toLocaleString('es-CO');}
+function sim(){
+  const fe=+document.getElementById('iFE').value||0, u=+document.getElementById('iU').value||1,
+        m=+document.getElementById('iM').value||0, s=+document.getElementById('iS').value||1;
+  let plan='Starter',why=[];
+  if(fe>300){plan='Pro';why.push(`${fe} FE/mes supera las 300 incluidas en Starter`);}
+  if(u>2){plan=(plan==='Plus')?'Plus':'Pro';why.push(`${u} usuarios de gestión supera el cupo de 2 de Starter`);}
+  if(m>400){plan=(plan==='Plus')?'Plus':'Pro';why.push(`${m} ventas/mes: perfil de servicio en mesa con dos turnos`);}
+  if(u>5){plan='Plus';why.push(`${u} usuarios supera el cupo de 5 de Pro`);}
+  if(m>1500){plan='Plus';why.push(`${m} ventas/mes: alto volumen`);}
+  if(s>1){plan='Plus';why.push(`${s} sedes: multi-sede requiere Plus + add-on de sucursal`);}
+  if(!why.length)why.push('Todas las métricas caben en el plan de entrada.');
+  why.push('Las mesas no intervienen: no son barrera de plan (§05)');
+  document.getElementById('oPlan').textContent=plan;
+  document.getElementById('oWhy').textContent=why.join(' · ');
+  const p=P26[plan];
+  document.getElementById('oPrice').textContent=`${fmt(p.m)}/mes · ${fmt(p.a)}/año con −15%`;
+}
+sim();
+
+/* ── charts ── */
+const SCAT=[{x:7,y:1188,n:'Cadillero Coffee'},{x:8,y:160,n:'Soñadores del Fogón'},{x:9,y:82,n:'Isabella Salazar'},{x:11,y:817,n:'Mi Lechoncito'},{x:12,y:202,n:'Berlín Bar'},{x:13,y:107,n:'Bahía 1525'},{x:13,y:510,n:'Amor y Café Togo'},{x:14,y:93,n:'Franco Fast Food'},{x:14,y:266,n:'E&D Coffee'},{x:14,y:721,n:'Carbones Bike Burger'},{x:14,y:1458,n:'La Sazón de Doña Julia'},{x:15,y:51,n:'Windsor Café Bar'},{x:16,y:52,n:'Casa Privata'},{x:16,y:94,n:'Al Banun'},{x:16,y:153,n:'Sushi Art Sicomoro'},{x:16,y:324,n:'Tren de la Sierra'},{x:18,y:273,n:'Vidal Camilo Cárdenas'},{x:19,y:183,n:'Casa Tlaxcala'},{x:19,y:1077,n:'Diego F. Ramírez'},{x:20,y:369,n:'Verdelatte'},{x:23,y:460,n:'Casa Adrian'},{x:23,y:1023,n:'Holy Coffee'},{x:24,y:118,n:'Sindamanoy'},{x:24,y:624,n:'Mantra Club'},{x:27,y:100,n:'Angela Flórez (Mangú)'},{x:29,y:404,n:'Indigo Resto Bar'},{x:29,y:564,n:'Vlacem Gourmet'},{x:31,y:204,n:'Los Juegos de Demetria'},{x:32,y:2,n:'Enríquez Ordóñez'},{x:32,y:24,n:'Licorera Elite'},{x:32,y:113,n:'Mi Pite'},{x:35,y:850,n:'Marmeleé'},{x:37,y:195,n:'El Sarao Pub'},{x:37,y:1247,n:'Achiotte 8a'},{x:39,y:44,n:'Club Monterrey'},{x:41,y:276,n:'Bar Alkaeda'},{x:43,y:814,n:'Licoexpress San Antonio'},{x:44,y:1374,n:'NAN2 Licobar'},{x:51,y:28,n:'Verbena Licoexpress'},{x:51,y:226,n:'Parrillita Campestre'},{x:51,y:399,n:'Delfos Video Bar'},{x:56,y:426,n:'El Panteón de la Salsa'},{x:71,y:3,n:'Chocofrutikids'},{x:72,y:4171,n:'El Rincón de Andrés'},{x:88,y:344,n:'Rest. Nacional TEST'},{x:90,y:275,n:'Salsa Cámara'}];
+
+const cf={family:"'Montserrat'",size:11}, gc='#8A92A6', gl='#E9ECF4';
+const base={responsive:true,plugins:{legend:{display:false}},
+  scales:{x:{grid:{display:false},ticks:{font:cf,color:gc}},
+          y:{grid:{color:gl},border:{display:false},ticks:{font:cf,color:gc,precision:0}}}};
+new Chart(document.getElementById('chVentas'),{type:'bar',
+  data:{labels:['1–10','11–50','51–100','101–200','201–400','401–1.000','1.000+'],
+    datasets:[{data:[18,5,8,8,7,4,2],backgroundColor:'#1B2A5C',borderRadius:6,borderSkipped:false}]},
+  options:{...base,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+' comercios'}}}}});
+new Chart(document.getElementById('chUsers'),{type:'bar',
+  data:{labels:['1 usuario','2 usuarios','3 usuarios','4 usuarios','5+'],
+    datasets:[{data:[56,9,2,3,0],backgroundColor:['#1B2A5C','#2D3E7A','#4A90D9','#F5A623','#E83A5A'],
+      borderRadius:6,borderSkipped:false}]},
+  options:{...base,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+' comercios'}}}}});
+new Chart(document.getElementById('chFE'),{type:'bar',
+  data:{labels:['Rincón de Andrés','Salsa Cámara','C. Tlaxcala','Sushi Art','El Sarao','Mi Pite','Casa Adrian','Holy Coffee','Casa Privata','La Florería','Franco FF','Angela F.','Vidal C.','Club Monterrey','La Vespa','Indigo Resto Bar','Calma Coffee','Al Banun','M.C. Álvarez'],
+    datasets:[{data:[647,275,183,153,120,113,87,53,52,42,40,30,28,14,11,8,3,2,1],
+      backgroundColor:c=>c.raw>300?'#E83A5A':(c.raw>=100?'#4A90D9':'#1B2A5C'),borderRadius:5,borderSkipped:false}]},
+  options:{...base,indexAxis:'y',
+    scales:{x:{grid:{color:gl},border:{display:false},ticks:{font:cf,color:gc}},
+            y:{grid:{display:false},ticks:{font:{family:"'Montserrat'",size:10},color:gc}}},
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.x+' FE en julio'}}}}});
+new Chart(document.getElementById('chRatio'),{type:'bar',
+  data:{labels:['Restaurante','Esencial','Avanzado','Ilimitado','Freemium'],
+    datasets:[{data:[15.8,21.3,14.3,28.8,25.7],backgroundColor:['#E83A5A','#1B2A5C','#2D3E7A','#4A90D9','#B0B9CE'],
+      borderRadius:6,borderSkipped:false}]},
+  options:{...base,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+'% de las ventas se facturan'}}},
+    scales:{...base.scales,y:{...base.scales.y,ticks:{font:cf,color:gc,callback:v=>v+'%'}}}}});
+
+
+new Chart(document.getElementById('chMesas'),{type:'bar',
+  data:{labels:['0','1–11','12 (default)','13–20','21–30','31–40','41–60','61+'],
+    datasets:[{data:[10,18,152,37,21,11,12,5],
+      backgroundColor:['#B0B9CE','#1B2A5C','#E83A5A','#1B2A5C','#1B2A5C','#1B2A5C','#1B2A5C','#1B2A5C'],
+      borderRadius:6,borderSkipped:false}]},
+  options:{...base,plugins:{legend:{display:false},tooltip:{callbacks:{
+    label:c=>c.parsed.y+' comercios'+(c.dataIndex===2?' — valor por defecto':'')}}}}});
+
+new Chart(document.getElementById('chScatter'),{type:'scatter',
+  data:{datasets:[{data:SCAT,backgroundColor:'rgba(27,42,92,.6)',
+    pointRadius:5,pointHoverRadius:8,borderColor:'#1B2A5C'}]},
+  options:{responsive:true,plugins:{legend:{display:false},
+    tooltip:{callbacks:{label:c=>`${c.raw.n}: ${c.parsed.x} mesas, ${c.parsed.y} ventas/mes`}}},
+    scales:{x:{title:{display:true,text:'Mesas configuradas',font:cf,color:gc},
+        grid:{color:gl},border:{display:false},ticks:{font:cf,color:gc}},
+      y:{type:'logarithmic',title:{display:true,text:'Ventas/mes (escala log)',font:cf,color:gc},
+        grid:{color:gl},border:{display:false},ticks:{font:cf,color:gc}}}}});
+
+/* ── scroll spy ── */
+const links=[...document.querySelectorAll('.sb-link')];
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id));}});},
+  {rootMargin:'-70px 0px -70% 0px'});
+document.querySelectorAll('section').forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
